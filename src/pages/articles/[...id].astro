@@ -12,13 +12,18 @@ export async function getStaticPaths() {
 }
 
 const { article } = Astro.props;
-const { Content } = await render(article);
+const { Content, headings } = await render(article);
+const toc = headings.filter((h) => h.depth === 2);
 
 const fmt = (d) =>
   `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 ---
-<Base title={article.data.title} description={article.data.problem}>
-  <main class="frame">
+<Base
+  title={article.data.title}
+  description={article.data.problem}
+  ogImage={`/og/${article.id}.png`}
+>
+  <main class="frame" id="main" tabindex="-1">
     <article>
       <header class="article-head full">
         <span class="eyebrow">{article.data.category}</span>
@@ -32,6 +37,17 @@ const fmt = (d) =>
       </header>
 
       <Thumb seed={article.id} category={article.data.category} tags={article.data.tags} class="article-key" />
+
+      {toc.length > 2 && (
+        <nav class="toc" aria-label="目次">
+          <span class="toc-h">目次</span>
+          <ol>
+            {toc.map((h) => (
+              <li><a href={`#${h.slug}`}>{h.text}</a></li>
+            ))}
+          </ol>
+        </nav>
+      )}
 
       <div class="article-body">
         <Content />

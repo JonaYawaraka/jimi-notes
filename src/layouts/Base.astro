@@ -1,7 +1,10 @@
 ---
 import '../styles/global.css';
-const { title, description } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 const siteName = 'Jimi Notes';
+const SITE = Astro.site ?? new URL('https://jimi-notes.pages.dev');
+const canonical = new URL(Astro.url.pathname, SITE).href;
+const ogImg = new URL(ogImage ?? '/og-default.png', SITE).href;
 ---
 <!doctype html>
 <html lang="ja">
@@ -12,14 +15,24 @@ const siteName = 'Jimi Notes';
   <meta name="theme-color" content="#f4f2ec" />
   <title>{title ? `${title} — ${siteName}` : siteName}</title>
   {description && <meta name="description" content={description} />}
+  <link rel="canonical" href={canonical} />
   <meta property="og:title" content={title ?? siteName} />
   {description && <meta property="og:description" content={description} />}
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content={ogImg} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title ?? siteName} />
+  {description && <meta name="twitter:description" content={description} />}
+  <meta name="twitter:image" content={ogImg} />
+  <link rel="alternate" type="application/rss+xml" title="Jimi Notes — RSS" href="/rss.xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;700&display=swap"
   />
   <script is:inline>
     // reduced-motion でなければ図解アニメを有効化（描画前に付与してチラつき防止）
@@ -27,6 +40,7 @@ const siteName = 'Jimi Notes';
   </script>
 </head>
 <body>
+  <a class="skip" href="#main">本文へスキップ</a>
   <header class="site-head">
     <div class="frame">
       <a class="brand" href="/" aria-label="Jimi Notes home">
@@ -65,6 +79,18 @@ const siteName = 'Jimi Notes';
         } catch (_) { showAll(); }
       };
       if (document.readyState !== 'loading') reveal(); else addEventListener('DOMContentLoaded', reveal);
+
+      // サムネのアニメは画面内のときだけ動かす（オフスクリーンはCPU節約）
+      const initThumbs = () => {
+        const thumbs = document.querySelectorAll('.jn-thumb');
+        if (!thumbs.length) return;
+        if (!('IntersectionObserver' in window)) { thumbs.forEach((t) => t.classList.add('is-anim')); return; }
+        const tio = new IntersectionObserver((es) => {
+          for (const e of es) e.target.classList.toggle('is-anim', e.isIntersecting);
+        }, { rootMargin: '140px' });
+        thumbs.forEach((t) => tio.observe(t));
+      };
+      if (document.readyState !== 'loading') initThumbs(); else addEventListener('DOMContentLoaded', initThumbs);
     }
   </script>
 </body>

@@ -1,0 +1,80 @@
+// 記事の内容に対応した抽象バウハウス・モチーフ(SVG inner)を決定的に生成。
+// Thumb.astro（サイト内サムネ）と OG画像エンドポイントで共用する。
+// viewBox は 0 0 320 240。bg は別途 <rect> で敷く前提で inner だけ返す。
+
+function hash(s) { let h = 2166136261 >>> 0; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h >>> 0; }
+function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+
+const INK = '#16150f', RED = '#de3c24', BLUE = '#2f4a8c', OCHRE = '#e6a32e', PAPER = '#f4f2ec', LINE = '#16150f';
+
+const SLUG_MOTIF = {
+  'background-design': 'depth', 'shadow-depth': 'depth', 'spacing-rhythm': 'spacing',
+  'type-scale': 'scale', 'neutral-grey': 'swatches', 'border-radius': 'radius',
+  'button-states': 'button', 'dividers-borders': 'divider', 'icon-stroke': 'icons',
+  'jp-typography': 'textlines', 'alignment-grid': 'align', 'contrast-hierarchy': 'scale',
+  'form-fields': 'field', 'card-design': 'layers', 'empty-loading-states': 'layers',
+  'photo-crop': 'crop', 'data-numbers': 'table', 'easing-motion': 'motion',
+  'link-styling': 'link', 'table-readability': 'table', 'tags-badges': 'pill',
+  'dark-mode-pitfalls': 'swatches', 'decorative-details': 'divider', 'focus-rings': 'field',
+  'z-index-stacking': 'layers', 'modal-dialog': 'layers', 'micro-copy': 'textlines',
+  'toggle-checkbox-radio': 'button', 'nav-header': 'align', 'footer-design': 'layers',
+  'pricing-table': 'table',
+};
+
+function chooseMotif(seed, category, tags) {
+  if (SLUG_MOTIF[seed]) return SLUG_MOTIF[seed];
+  const s = `${seed} ${tags.join(' ')} ${category}`.toLowerCase();
+  const m = [
+    [/shadow|影|elevation|depth/, 'depth'], [/radius|角丸|円/, 'radius'],
+    [/spacing|余白|rhythm|whitespace|density|密度/, 'spacing'],
+    [/type-?scale|タイプ|scale|hierarchy|階層|contrast|コントラスト|視線/, 'scale'],
+    [/jp-?typo|日本語|組版|line|行間|palt/, 'textlines'],
+    [/grey|グレー|color|色|dark-?mode|ダークモード|彩度/, 'swatches'],
+    [/align|整列|grid|グリッド/, 'align'],
+    [/button|ボタン|toggle|トグル|radio|チェック|focus|フォーカス/, 'button'],
+    [/divider|区切り|border|ボーダー|罫線/, 'divider'], [/icon|アイコン/, 'icons'],
+    [/photo|写真|画像|crop|トリミング|構図|image/, 'crop'],
+    [/motion|easing|モーション|scroll|スクロール|transition|イージング/, 'motion'],
+    [/form|フォーム|入力|search|検索|input|field/, 'field'], [/link|リンク/, 'link'],
+    [/tag|バッジ|チップ|badge|ラベル/, 'pill'],
+    [/data|数字|tabular|table|テーブル|pricing|料金/, 'table'],
+    [/modal|tooltip|popover|accordion|tab|タブ|empty|空状態|loading|読込|toast|通知|status|card|カード|nav|footer|z-index|重なり/, 'layers'],
+  ];
+  for (const [re, key] of m) if (re.test(s)) return key;
+  const byCat = { 'タイポ': 'scale', '色': 'swatches', '余白': 'spacing', 'レイアウト': 'align', '質感': 'depth', '細部': 'button', '画像': 'crop' };
+  return byCat[category] || 'layers';
+}
+
+// anim 属性を付けるか（サイト内=true / OG静止画=false）
+export function buildMotif(seed = '', category = '', tags = [], { anim = true } = {}) {
+  const rnd = mulberry32(hash(seed) || 1);
+  const pick = (arr) => arr[Math.floor(rnd() * arr.length)];
+  const bg = PAPER;
+  const pool = [RED, BLUE, OCHRE, INK];
+  const c1 = pick(pool);
+  const c2 = pick(pool.filter((c) => c !== c1));
+  const jx = Math.round(rnd() * 16 - 8);
+  const motif = chooseMotif(seed, category, tags);
+  const cl = (name) => (anim ? ` class="${name}"` : ''); // 静止画ではアニメクラス不要
+
+  const M = {
+    depth: `<rect${cl('jn-shadow')} x="${128 + jx}" y="92" width="92" height="92" fill="${c2}"/><rect x="${104 + jx}" y="70" width="92" height="92" fill="${c1}"/>`,
+    radius: `<rect x="${58 + jx}" y="80" width="84" height="84" fill="${c1}"/><rect${cl('jn-radius')} x="${178 + jx}" y="80" width="84" height="84" rx="22" fill="${c2}"/>`,
+    spacing: `<rect x="${66 + jx}" y="74" width="32" height="96" fill="${c1}"/><rect x="${140 + jx}" y="74" width="32" height="96" fill="${c1}"/><rect x="${214 + jx}" y="74" width="32" height="96" fill="${c1}"/><rect${cl('jn-breathe')} x="${112 + jx}" y="114" width="14" height="14" fill="${c2}"/><rect${cl('jn-breathe')} x="${186 + jx}" y="114" width="14" height="14" fill="${c2}"/>`,
+    scale: `<rect x="64" y="80" width="184" height="28" fill="${c1}"/><rect x="64" y="122" width="132" height="21" fill="${c1}"/><rect x="64" y="157" width="92" height="15" fill="${c2}"/>`,
+    textlines: `<rect x="62" y="78" width="196" height="8" fill="${c1}"/><rect x="62" y="98" width="196" height="8" fill="${c1}"/><rect x="62" y="118" width="150" height="8" fill="${c1}"/><rect x="62" y="146" width="196" height="8" fill="${c1}"/><rect x="62" y="166" width="110" height="8" fill="${c2}"/>`,
+    swatches: `<rect x="48" y="64" width="56" height="112" fill="${RED}"/><rect x="104" y="64" width="56" height="112" fill="${OCHRE}"/><rect x="160" y="64" width="56" height="112" fill="${BLUE}"/><rect${cl('jn-breathe')} x="216" y="64" width="56" height="112" fill="${INK}"/>`,
+    align: `<line x1="86" y1="52" x2="86" y2="188" stroke="${LINE}" stroke-width="2" opacity=".4"/><rect x="86" y="68" width="120" height="26" fill="${c1}"/><rect${cl('jn-snap')} x="86" y="107" width="92" height="26" fill="${c2}"/><rect x="86" y="146" width="150" height="26" fill="${c1}"/>`,
+    button: `<rect${cl('jn-press')} x="80" y="96" width="160" height="50" rx="25" fill="${c1}"/><rect x="108" y="115" width="64" height="12" rx="6" fill="${bg}"/>`,
+    divider: `<rect x="64" y="66" width="192" height="42" fill="${c1}" opacity=".85"/><line${cl('jn-line')} x1="64" y1="120" x2="256" y2="120" stroke="${c2}" stroke-width="3"/><rect x="64" y="132" width="192" height="42" fill="${c1}" opacity=".45"/>`,
+    icons: `<circle cx="100" cy="92" r="26" fill="none" stroke="${c1}" stroke-width="8"/><rect x="168" y="66" width="52" height="52" fill="none" stroke="${c1}" stroke-width="8"/><path d="M100 144 l30 50 h-60 Z" fill="none" stroke="${c2}" stroke-width="8" stroke-linejoin="round"/><rect${cl('jn-radius')} x="168" y="142" width="52" height="52" rx="14" fill="none" stroke="${c1}" stroke-width="8"/>`,
+    crop: `<line x1="132" y1="58" x2="132" y2="182" stroke="${LINE}" stroke-width="1.5" opacity=".35"/><line x1="190" y1="58" x2="190" y2="182" stroke="${LINE}" stroke-width="1.5" opacity=".35"/><rect x="72" y="58" width="176" height="124" fill="none" stroke="${c1}" stroke-width="6"/><circle${cl('jn-breathe')} cx="190" cy="92" r="22" fill="${c2}"/>`,
+    motion: `<path d="M52 178 C118 178 150 74 268 74" fill="none" stroke="${c1}" stroke-width="6" stroke-linecap="round" opacity=".55"/><circle${cl('jn-travel')} cx="52" cy="178" r="13" fill="${c2}"/>`,
+    field: `<rect x="56" y="98" width="208" height="48" rx="8" fill="none" stroke="${c1}" stroke-width="5"/><rect${cl('jn-caret')} x="74" y="111" width="4" height="22" fill="${c2}"/><rect x="90" y="117" width="78" height="10" rx="5" fill="${c1}" opacity=".4"/>`,
+    link: `<rect x="60" y="106" width="200" height="10" fill="${c1}" opacity=".3"/><rect x="118" y="106" width="76" height="10" fill="${c1}"/><rect${cl('jn-line')} x="118" y="124" width="76" height="4" fill="${c2}"/>`,
+    pill: `<rect x="60" y="90" width="74" height="32" rx="16" fill="${c1}"/><rect x="144" y="90" width="58" height="32" rx="16" fill="${c2}"/><rect${cl('jn-breathe')} x="60" y="134" width="50" height="32" rx="16" fill="${c2}"/><rect x="120" y="134" width="82" height="32" rx="16" fill="${c1}"/>`,
+    table: `<rect x="58" y="70" width="204" height="22" fill="${c1}"/><rect x="58" y="100" width="92" height="12" fill="${c1}" opacity=".5"/><rect x="170" y="100" width="50" height="12" fill="${c2}"/><rect x="58" y="124" width="92" height="12" fill="${c1}" opacity=".5"/><rect${cl('jn-breathe')} x="170" y="124" width="50" height="12" fill="${c2}"/><rect x="58" y="148" width="92" height="12" fill="${c1}" opacity=".5"/><rect x="170" y="148" width="50" height="12" fill="${c2}"/>`,
+    layers: `<rect x="92" y="74" width="156" height="96" fill="${c1}"/><rect${cl('jn-float')} x="${68 + jx}" y="92" width="156" height="96" fill="${c2}"/>`,
+  };
+  return { bg, motif, c1, c2, inner: M[motif] || M.layers };
+}

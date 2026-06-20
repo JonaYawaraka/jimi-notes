@@ -56,7 +56,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="car-sep car-sep-clean"><b>Elevated</b>影だけで分離</div></div><div class="label">✓ elevated を1つだけ選ぶ → 静かで読みやすい</div></div>
 </div>
 
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://uxdesign.cc/8-best-practices-for-ui-card-design-898f45bb60cc" target="_blank" rel="noopener">8 best practices for UI card design — UX Collective</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://uxdesign.cc/8-best-practices-for-ui-card-design-898f45bb60cc" target="_blank" rel="noopener">8 best practices for UI card design — UX Collective</a></p>
 
 ## 02 — 影は多層・背景色相で色付け
 
@@ -89,7 +89,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="car-grid"><div class="car-cell"><b>A</b><span>内16 ≤ 外24</span></div><div class="car-cell"><b>B</b><span>個別に読める</span></div></div></div><div class="label">✓ padding 16 ≤ gap 24（共に8の倍数）→ 各カードが独立</div></div>
 </div>
 
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://cieden.com/book/sub-atomic/spacing/spacing-best-practices" target="_blank" rel="noopener">Spacing best practices — Cieden</a> <a href="https://www.conceptfusion.co.uk/post/web-design-spacing-and-sizing-best-practices" target="_blank" rel="noopener">Web Design Spacing — Concept Fusion</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://cieden.com/book/sub-atomic/spacing/spacing-best-practices" target="_blank" rel="noopener">Spacing best practices — Cieden</a> <a href="https://www.conceptfusion.co.uk/post/web-design-spacing-and-sizing-best-practices" target="_blank" rel="noopener">Web Design Spacing — Concept Fusion</a></p>
 
 ## 05 — 固定スタック順で階層を1つ立てる
 
@@ -100,7 +100,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="car-info car-hier"><div class="car-thumb"></div><p class="car-m">CATEGORY</p><p class="car-t">記事のタイトル</p><p class="car-d">補足の説明テキストがここに続きます</p></div></div><div class="label">✓ title=16px/700/濃、meta=11px/淡、desc=中間 → 階層が立つ</div></div>
 </div>
 
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://eightshapes.com/articles/cards-and-composability-in-design-systems/" target="_blank" rel="noopener">Cards and Composability in Design Systems — Eightshapes</a> <a href="https://blog.logrocket.com/ux-design/ui-card-design/" target="_blank" rel="noopener">Card interface design — LogRocket</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://eightshapes.com/articles/cards-and-composability-in-design-systems/" target="_blank" rel="noopener">Cards and Composability in Design Systems — Eightshapes</a> <a href="https://blog.logrocket.com/ux-design/ui-card-design/" target="_blank" rel="noopener">Card interface design — LogRocket</a></p>
 
 ## 06 — 比率固定とtruncationで行を揃える
 
@@ -111,7 +111,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="car-row car-row-align"><div class="car-mini"><b>短い</b><span class="car-clamp">1行だけ</span></div><div class="car-mini"><b>長い</b><span class="car-clamp">説明が長くても2行でclampされ行が揃って整列する</span></div></div></div><div class="label">✓ line-clamp:2 ＋ aspect-ratio固定 → 行が揃う</div></div>
 </div>
 
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://prototypr.io/post/8-best-practices-for-ui-card-design" target="_blank" rel="noopener">8 best practices for UI card design — Prototypr</a> <a href="https://m1.material.io/components/cards.html" target="_blank" rel="noopener">Cards — Material Design (M1)</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://prototypr.io/post/8-best-practices-for-ui-card-design" target="_blank" rel="noopener">8 best practices for UI card design — Prototypr</a> <a href="https://m1.material.io/components/cards.html" target="_blank" rel="noopener">Cards — Material Design (M1)</a></p>
 
 ## 実装スニペット
 
@@ -215,12 +215,12 @@ draft: false
 <p class="src"><span class="badge b-primary">primary</span><a href="https://m2.material.io/components/cards" target="_blank" rel="noopener">Cards — Material Design (M2)</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://m3.material.io/styles/elevation" target="_blank" rel="noopener">Elevation — Material Design 3</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://m1.material.io/components/cards.html" target="_blank" rel="noopener">Cards — Components — Material Design (M1)</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://uxdesign.cc/8-best-practices-for-ui-card-design-898f45bb60cc" target="_blank" rel="noopener">8 best practices for UI card design — UX Collective</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://eightshapes.com/articles/cards-and-composability-in-design-systems/" target="_blank" rel="noopener">Cards and Composability in Design Systems — Eightshapes</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://blog.logrocket.com/ux-design/ui-card-design/" target="_blank" rel="noopener">Card interface design — LogRocket</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://cieden.com/book/sub-atomic/spacing/spacing-best-practices" target="_blank" rel="noopener">Spacing best practices — Cieden</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.conceptfusion.co.uk/post/web-design-spacing-and-sizing-best-practices" target="_blank" rel="noopener">Web Design Spacing and Sizing Best Practices — Concept Fusion</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://prototypr.io/post/8-best-practices-for-ui-card-design" target="_blank" rel="noopener">8 best practices for UI card design — Prototypr</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://uxdesign.cc/8-best-practices-for-ui-card-design-898f45bb60cc" target="_blank" rel="noopener">8 best practices for UI card design — UX Collective</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://eightshapes.com/articles/cards-and-composability-in-design-systems/" target="_blank" rel="noopener">Cards and Composability in Design Systems — Eightshapes</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://blog.logrocket.com/ux-design/ui-card-design/" target="_blank" rel="noopener">Card interface design — LogRocket</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://cieden.com/book/sub-atomic/spacing/spacing-best-practices" target="_blank" rel="noopener">Spacing best practices — Cieden</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.conceptfusion.co.uk/post/web-design-spacing-and-sizing-best-practices" target="_blank" rel="noopener">Web Design Spacing and Sizing Best Practices — Concept Fusion</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://prototypr.io/post/8-best-practices-for-ui-card-design" target="_blank" rel="noopener">8 best practices for UI card design — Prototypr</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://www.mockplus.com/blog/post/card-ui-design" target="_blank" rel="noopener">Card UI Design: Best Practices and Examples — Mockplus</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.mass.gov/info-details/corner-radius-and-elevation" target="_blank" rel="noopener">Corner radius and elevation — Mass.gov Design System</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://www.uiprep.com/blog/everything-you-need-to-know-about-spacing-layout-grids" target="_blank" rel="noopener">Everything you need to know about spacing & layout grids — UIPrep</a></p>

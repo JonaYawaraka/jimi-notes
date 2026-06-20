@@ -55,7 +55,7 @@ draft: false
 </div>
 
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.w3.org/WAI/WCAG21/Techniques/failures/F73" target="_blank" rel="noopener">F73: Failure of SC 1.4.1 due to creating links not visually evident without color — W3C/WAI</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.nngroup.com/articles/guidelines-for-visualizing-links/" target="_blank" rel="noopener">Guidelines for Visualizing Links — NN/g</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.nngroup.com/articles/guidelines-for-visualizing-links/" target="_blank" rel="noopener">Guidelines for Visualizing Links — NN/g</a></p>
 
 ## 02 — 下線は text-decoration のサブプロパティで上品に整える
 
@@ -90,7 +90,7 @@ AA 適合のリンク配色は1つの比率では足りない。「本文↔背�
 </div>
 
 <p class="src"><span class="badge b-primary">primary</span><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible" target="_blank" rel="noopener">:focus-visible — MDN Web Docs</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.sarasoueidan.com/blog/focus-indicators/" target="_blank" rel="noopener">A guide to designing accessible, WCAG-conformant focus indicators — Sara Soueidan</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.sarasoueidan.com/blog/focus-indicators/" target="_blank" rel="noopener">A guide to designing accessible, WCAG-conformant focus indicators — Sara Soueidan</a></p>
 
 ## 05 — 下線を外すなら hover「と」focus の両方で非色キューを再付与
 
@@ -102,7 +102,7 @@ AA 適合のリンク配色は1つの比率では足りない。「本文↔背�
 </div>
 
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G183" target="_blank" rel="noopener">G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover — W3C/WAI</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://accessibleweb.com/question-answer/what-are-the-contrast-requirements-for-an-elements-focus-mouseover-select-states/" target="_blank" rel="noopener">Contrast requirements for focus/mouseover/select states — Accessible Web</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://accessibleweb.com/question-answer/what-are-the-contrast-requirements-for-an-elements-focus-mouseover-select-states/" target="_blank" rel="noopener">Contrast requirements for focus/mouseover/select states — Accessible Web</a></p>
 
 ## 06 — リンクのアフォーダンスは一貫させる
 
@@ -113,7 +113,7 @@ AA 適合のリンク配色は1つの比率では足りない。「本文↔背�
   <div class="demo"><div class="canvas" style="background:#fff"><div class="lin-af lin-good06"><p style="margin:0">強調は<b class="em">太字</b>で示し、クリックできる<a href="#" onclick="return false">リンク</a>だけが青＋下線。シグナルが一貫する。</p></div></div><div class="label">✓ 青＋下線はリンク専用、強調は太字 → 誤誘導が消える</div></div>
 </div>
 
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.nngroup.com/articles/guidelines-for-visualizing-links/" target="_blank" rel="noopener">Guidelines for Visualizing Links — NN/g</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.nngroup.com/articles/guidelines-for-visualizing-links/" target="_blank" rel="noopener">Guidelines for Visualizing Links — NN/g</a></p>
 
 ## 実装スニペット
 
@@ -183,9 +183,9 @@ a:visited { color: #804180; }          /* 紫 */
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G183" target="_blank" rel="noopener">G183: Using a contrast ratio of 3:1 with surrounding text and providing additional visual cues on hover — W3C/WAI</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.w3.org/WAI/WCAG21/Techniques/failures/F73" target="_blank" rel="noopener">F73: Failure of SC 1.4.1 due to creating links not visually evident without color — W3C/WAI</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://webaim.org/blog/wcag-2-0-and-link-colors/" target="_blank" rel="noopener">WebAIM: WCAG 2.0 and Link Colors</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.nngroup.com/articles/guidelines-for-visualizing-links/" target="_blank" rel="noopener">Guidelines for Visualizing Links — NN/g</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.sarasoueidan.com/blog/focus-indicators/" target="_blank" rel="noopener">A guide to designing accessible, WCAG-conformant focus indicators — Sara Soueidan</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.nngroup.com/articles/guidelines-for-visualizing-links/" target="_blank" rel="noopener">Guidelines for Visualizing Links — NN/g</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.sarasoueidan.com/blog/focus-indicators/" target="_blank" rel="noopener">A guide to designing accessible, WCAG-conformant focus indicators — Sara Soueidan</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness" target="_blank" rel="noopener">text-decoration-thickness — MDN Web Docs</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:focus-visible" target="_blank" rel="noopener">:focus-visible — MDN Web Docs</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://accessibleweb.com/question-answer/what-are-the-contrast-requirements-for-an-elements-focus-mouseover-select-states/" target="_blank" rel="noopener">Contrast requirements for focus/mouseover/select states — Accessible Web</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://accessibleweb.com/question-answer/what-are-the-contrast-requirements-for-an-elements-focus-mouseover-select-states/" target="_blank" rel="noopener">Contrast requirements for focus/mouseover/select states — Accessible Web</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://adrianroselli.com/2016/06/on-link-underlines.html" target="_blank" rel="noopener">On Link Underlines — Adrian Roselli</a></p>

@@ -67,7 +67,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="pho-frame"><div class="pho-grid-lines"></div><div class="pho-subject pho-thirds"></div></div></div><div class="label">✓ 交点に寄せる → 余白方向に視線が動きテンションが生まれる</div></div>
 </div>
 
-<p class="src"><span class="badge b-primary">secondary</span><a href="https://ixdf.org/literature/topics/rule-of-thirds" target="_blank" rel="noopener">What is the Rule of Thirds? — IxDF</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://ixdf.org/literature/topics/rule-of-thirds" target="_blank" rel="noopener">What is the Rule of Thirds? — IxDF</a></p>
 
 ## 02 — 人物は目を上の横線、地平線も横線に乗せる
 
@@ -78,7 +78,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="pho-frame pho-horizon-good"><div class="pho-sky"></div><div class="pho-land"></div><div class="pho-sun"></div><div class="pho-grid-lines"></div></div></div><div class="label">✓ 地平線を下の横線、太陽を交点へ → 空が主役で安定</div></div>
 </div>
 
-<p class="src"><span class="badge b-primary">secondary</span><a href="https://ixdf.org/literature/topics/rule-of-thirds" target="_blank" rel="noopener">What is the Rule of Thirds? — IxDF</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://ixdf.org/literature/topics/rule-of-thirds" target="_blank" rel="noopener">What is the Rule of Thirds? — IxDF</a></p>
 
 ## 03 — コンテナに aspect-ratio、img に object-fit:cover で枠を充填クロップ
 
@@ -100,7 +100,7 @@ draft: false
   <div class="demo"><div class="canvas" style="background:var(--paper-2)"><div class="pho-photo pho-portrait pho-pos-top"><div class="pho-fill"><div class="pho-body"></div><div class="pho-face"></div></div></div></div><div class="label">✓ object-position: center top → 顔・目を残してクロップ</div></div>
 </div>
 
-<p class="src"><span class="badge b-primary">secondary</span><a href="https://css-tricks.com/almanac/properties/o/object-position/" target="_blank" rel="noopener">object-position | CSS-Tricks</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://css-tricks.com/almanac/properties/o/object-position/" target="_blank" rel="noopener">object-position | CSS-Tricks</a></p>
 
 ## 05 — 比率はプロダクト全体で意図的に統一する
 
@@ -214,10 +214,10 @@ CMS や LP で同じ写真をカード・ヒーロー・正方形サムネに使
 
 三分割法は経験則であり厳密な視覚法則ではない。「左上交点が注目40%超」「`center top` が顔向き構図に効く」は単一ソース由来で、被写体やデザイン文脈で変動するため鵜呑みにしない。CSS の数値（焦点 `64.2862%` 等）は出典のサンプル値で、実画像では焦点を取り直すこと。Odland式の `clamp()`/`calc()` 式は出典の表記に揺れがあり（`clamp` の引数順は min, preferred, max が正で、上のスニペットはその順に整理した）、本番投入前に実機検証が必須。container query 単位と `aspect-ratio` は Safari 15+／Chrome 88+／Firefox 89+ 対応で、それ未満の環境は `@supports` ＋ `padding-top` のフォールバックが必要。比率の「1:1推奨」は eBay のプロダクト文脈であり、ブランドや媒体によって最適比率は異なる。
 
-<p class="src"><span class="badge b-primary">secondary</span><a href="https://ixdf.org/literature/topics/rule-of-thirds" target="_blank" rel="noopener">What is the Rule of Thirds? — IxDF</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://ixdf.org/literature/topics/rule-of-thirds" target="_blank" rel="noopener">What is the Rule of Thirds? — IxDF</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://www.etienneaubertbonn.com/rule-of-thirds/" target="_blank" rel="noopener">Rule of Thirds in Design and Photography: A Visual Guide</a></p>
-<p class="src"><span class="badge b-primary">secondary</span><a href="https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit" target="_blank" rel="noopener">How To Scale and Crop Images with CSS object-fit — DigitalOcean</a></p>
-<p class="src"><span class="badge b-primary">secondary</span><a href="https://css-tricks.com/almanac/properties/o/object-position/" target="_blank" rel="noopener">object-position | CSS-Tricks</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.digitalocean.com/community/tutorials/css-cropping-images-object-fit" target="_blank" rel="noopener">How To Scale and Crop Images with CSS object-fit — DigitalOcean</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://css-tricks.com/almanac/properties/o/object-position/" target="_blank" rel="noopener">object-position | CSS-Tricks</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://henry.codes/writing/pure-css-focal-points/" target="_blank" rel="noopener">Using focal points, aspect ratio & object-fit to crop images correctly — Henry From Online</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://odland.dev/2023/02/26/cropping-images-with-css-while-keeping-a-focal-point-in-the-center.html" target="_blank" rel="noopener">Cropping Images with CSS While Keeping a Focal Point in the Center — Odland</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://ishadeed.com/article/css-aspect-ratio/" target="_blank" rel="noopener">Let's Learn About Aspect Ratio In CSS — Ahmad Shadeed</a></p>

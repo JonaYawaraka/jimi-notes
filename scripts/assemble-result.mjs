@@ -8,6 +8,8 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DEST = join(root, 'src/content/articles');
+const CATEGORIES = ['色', '余白', 'タイポ', '画像', 'レイアウト', '質感', '細部'];
+
 const outFile = process.argv[2];
 if (!outFile) { console.error('usage: assemble-result.mjs <output.json>'); process.exit(1); }
 
@@ -21,22 +23,35 @@ const stripFences = (s) => {
   if (t.startsWith('```')) { t = t.replace(/^```[a-zA-Z]*\n/, '').replace(/\n```\s*$/, ''); }
   return t;
 };
-const yamlStr = (s) => '"' + String(s).replace(/"/g, '\\"') + '"';
-const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; };
+// JSON.stringify は YAML のダブルクォート・スカラとして安全（引用符/バックスラッシュ/制御文字を処理）
+const y = (s) => JSON.stringify(String(s));
+const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 
-let written = 0; const slugs = [];
+// 書き出し前のバリデーション。不正なら理由を返す。
+function validate(a) {
+  if (!a || typeof a !== 'object') return 'not an object';
+  if (!a.slug || !/^[a-z0-9-]+$/.test(a.slug)) return `bad slug: ${a?.slug}`;
+  if (!a.title || !a.problem) return 'missing title/problem';
+  if (!CATEGORIES.includes(a.category)) return `bad category: ${a.category}`;
+  if (!Array.isArray(a.tags)) return 'tags not array';
+  if (!a.body || a.body.length < 200) return 'body too short/empty';
+  return null;
+}
+
+let written = 0, skipped = 0; const slugs = [];
 for (const a of arr) {
-  if (!a || !a.slug || !a.body) { console.log('skip malformed', a?.slug); continue; }
+  const err = validate(a);
+  if (err) { console.error(`SKIP ${a?.slug ?? '?'}: ${err}`); skipped++; continue; }
   let body = stripFences(a.body);
   if (body.includes('&lt;style') && !body.includes('<style')) body = unescapeHtml(body);
   const fm = [
     '---',
-    `title: ${yamlStr(a.title)}`,
-    `problem: ${yamlStr(a.problem)}`,
+    `title: ${y(a.title)}`,
+    `problem: ${y(a.problem)}`,
     `category: ${a.category}`,
-    `tags: [${(a.tags || []).join(', ')}]`,
+    `tags: [${a.tags.map((t) => y(t)).join(', ')}]`,
     `date: ${a.date || today()}`,
-    `sources: ${a.sourceCount ?? 0}`,
+    `sources: ${Number(a.sourceCount) || 0}`,
     `draft: false`,
     '---', '', body.trim(), '',
   ].join('\n');
@@ -44,4 +59,6 @@ for (const a of arr) {
   written++; slugs.push(a.slug);
   console.log(`wrote ${a.slug}.md (${a.sourceCount} sources)`);
 }
-console.log(`done: ${written} articles -> ${slugs.join(', ')}`);
+console.log(`done: ${written} written, ${skipped} skipped -> ${slugs.join(', ')}`);
+// 1本も書けなかったら失敗としてデプロイを止める（run-daily.sh が検知）
+if (written === 0) { console.error('ERROR: no valid articles written'); process.exit(1); }

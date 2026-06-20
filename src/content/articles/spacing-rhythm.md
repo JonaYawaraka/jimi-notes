@@ -197,14 +197,14 @@ px / rem の使い分け + タッチターゲット最小 48×48px・間隔 8px(
 
 <div class="note"><b>正直な但し書き：</b>「主要解像度が8で割り切れる」という8px採用の根拠は spec.fm の主張で、デバイスが多様化した現在は装飾的理由に近い(本質は選択肢を減らす一貫性)。internal ≤ external のうち「padding ≤ margin」という厳密な不等式は Cieden の定式化で、Refactoring UI の原文は「グループの周囲の余白 > 内側の余白」とより緩い。px vs rem 指針は Josh Comeau 個人の推奨で、固定サイズのバナーでは px 中心で問題ない。NYT 見出し:本文比 2:1 は Medium 記事の引用で一次確認は未取得。25%差・非線形は知覚則であって厳密な閾値ではなく目安。Tailwind 新スケールやトークン命名3方式の一部はブログ/Discussion の提案段階で、一次規格ではない(中核の 8px グリッドと Material/Atlassian/InVision のトークンは一次ソース)。</div>
 
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://gist.github.com/selcukcihan/b9418596a98abfcd4bbc622550820cc5" target="_blank" rel="noopener">Notes from 'Refactoring UI' — GitHub Gist</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://gist.github.com/selcukcihan/b9418596a98abfcd4bbc622550820cc5" target="_blank" rel="noopener">Notes from 'Refactoring UI' — GitHub Gist</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://cieden.com/book/sub-atomic/spacing/spacing-best-practices" target="_blank" rel="noopener">Spacing best practices — Cieden</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://atlassian.design/foundations/spacing" target="_blank" rel="noopener">Overview - Spacing — Atlassian Design</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://m2.material.io/design/layout/spacing-methods.html" target="_blank" rel="noopener">Spacing methods — Material Design</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.designsystems.com/space-grids-and-layouts/" target="_blank" rel="noopener">Spacing, grids, and layouts — Design Systems by InVision</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/" target="_blank" rel="noopener">The Surprising Truth About Pixels and Accessibility — Josh Comeau</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://www.freecodecamp.org/news/8-point-grid-typography-on-the-web-be5dc97db6bc/" target="_blank" rel="noopener">8-Point Grid: Typography On The Web — freeCodeCamp</a></p>
-<p class="src"><span class="badge b-blog">secondary</span><a href="https://spec.fm/specifics/8-pt-grid" target="_blank" rel="noopener">8-Point Grid — spec.fm</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://www.freecodecamp.org/news/8-point-grid-typography-on-the-web-be5dc97db6bc/" target="_blank" rel="noopener">8-Point Grid: Typography On The Web — freeCodeCamp</a></p>
+<p class="src"><span class="badge b-secondary">secondary</span><a href="https://spec.fm/specifics/8-pt-grid" target="_blank" rel="noopener">8-Point Grid — spec.fm</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://blog.designary.com/p/spacing-systems-and-scales-ui-design" target="_blank" rel="noopener">Basics: Spacing systems & scales in UI design — Designary</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://medium.com/@linz07m/stop-guessing-ui-spacing-a-simple-system-that-works-6a2945ea97d3" target="_blank" rel="noopener">Stop Guessing UI Spacing — Lince Mathew (Medium)</a></p>
 <p class="src"><span class="badge b-primary">primary</span><a href="https://github.com/tailwindlabs/tailwindcss/discussions/12263" target="_blank" rel="noopener">A new default spacing scale · Tailwind Discussion #12263</a></p>

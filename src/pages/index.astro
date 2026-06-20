@@ -9,12 +9,15 @@ const fmt = (d) =>
 const articles = (await getCollection('articles'))
   .filter((a) => !a.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const CAT_ORDER = ['色', '余白', 'タイポ', '画像', 'レイアウト', '質感', '細部'];
+const cats = CAT_ORDER.filter((c) => articles.some((a) => a.data.category === c));
 ---
 <Base
   title={null}
   description="派手なトレンドではなく、毎回マジで困る『地味な急所』を、根拠と図版で解くデザインノート。"
 >
-  <main class="frame">
+  <main class="frame" id="main" tabindex="-1">
     <section class="hero">
       <span class="eyebrow">Design — the boring parts</span>
       <h1>地味だけど本当に困る<br /><span class="grad">デザインの悩み</span>を、解く。</h1>
@@ -31,23 +34,54 @@ const articles = (await getCollection('articles'))
       articles.length === 0 ? (
         <p class="dim" style="padding:60px 0">まだ公開記事はありません（下書き準備中）。</p>
       ) : (
-        <section class="index">
-          {articles.map((a, i) => (
-            <a class="index-row" href={`/articles/${a.id}/`}>
-              <Thumb seed={a.id} category={a.data.category} tags={a.data.tags} class="idx-thumb" />
-              <span>
-                <span class="cat">{a.data.category} · No.{String(i + 1).padStart(2, '0')}</span>
-                <h3>{a.data.title}</h3>
-                <p class="desc">{a.data.problem}</p>
-                <p class="desc" style="color:var(--ink-3);margin-top:14px;font-size:13px">
-                  {fmt(a.data.date)}{a.data.sources ? ` ・ ${a.data.sources}ソース裏取り` : ''}
-                </p>
-              </span>
-              <span class="arrow">→</span>
-            </a>
-          ))}
-        </section>
+        <>
+          <div class="filters" role="group" aria-label="カテゴリで絞り込み">
+            <button class="chip-f is-on" data-f="all" type="button">すべて<span>{articles.length}</span></button>
+            {cats.map((c) => (
+              <button class="chip-f" data-f={c} type="button">{c}<span>{articles.filter((a) => a.data.category === c).length}</span></button>
+            ))}
+          </div>
+
+          <section class="index">
+            {articles.map((a) => (
+              <a class="index-row" href={`/articles/${a.id}/`} data-category={a.data.category}>
+                <Thumb seed={a.id} category={a.data.category} tags={a.data.tags} class="idx-thumb" />
+                <span>
+                  <span class="cat">{a.data.category}</span>
+                  <h3>{a.data.title}</h3>
+                  <p class="desc">{a.data.problem}</p>
+                  <p class="desc when">
+                    {fmt(a.data.date)}{a.data.sources ? ` ・ ${a.data.sources}ソース裏取り` : ''}
+                  </p>
+                </span>
+                <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            ))}
+          </section>
+          <p class="no-match dim" hidden>このカテゴリの記事はまだありません。</p>
+        </>
       )
     }
   </main>
+
+  <script is:inline>
+    (() => {
+      const chips = [...document.querySelectorAll('.chip-f')];
+      const rows = [...document.querySelectorAll('.index-row')];
+      const noMatch = document.querySelector('.no-match');
+      chips.forEach((ch) =>
+        ch.addEventListener('click', () => {
+          const f = ch.dataset.f;
+          chips.forEach((c) => c.classList.toggle('is-on', c === ch));
+          let shown = 0;
+          rows.forEach((r) => {
+            const ok = f === 'all' || r.dataset.category === f;
+            r.hidden = !ok;
+            if (ok) shown++;
+          });
+          if (noMatch) noMatch.hidden = shown !== 0;
+        })
+      );
+    })();
+  </script>
 </Base>

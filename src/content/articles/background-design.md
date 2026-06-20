@@ -107,7 +107,7 @@ draft: false
 
 <p class="dim">→ 製品LPなら「白 → 薄グレー → ダーク+グロー(スペック訴求) → 白 → アクセント色(CTA)」のような<strong>明度のうねり</strong>を設計する。</p>
 
-<p class="src"><span class="badge b-blog">course</span><a href="https://tilda.education/en/courses/landing-page/landing-page-design-principles/" target="_blank" rel="noopener">tilda.education — Landing Page Design Principles</a></p>
+<p class="src"><span class="badge b-course">course</span><a href="https://tilda.education/en/courses/landing-page/landing-page-design-principles/" target="_blank" rel="noopener">tilda.education — Landing Page Design Principles</a></p>
 
 ## 03 — 背景タイプの選定マップ
 
@@ -182,7 +182,7 @@ draft: false
   </div>
 </div>
 
-<p class="src"><span class="badge b-blog">course</span><a href="https://tilda.education/en/courses/landing-page/landing-page-design-principles/" target="_blank" rel="noopener">tilda.education</a></p>
+<p class="src"><span class="badge b-course">course</span><a href="https://tilda.education/en/courses/landing-page/landing-page-design-principles/" target="_blank" rel="noopener">tilda.education</a></p>
 
 ## 05 — 可読性ガードレール（これがあるから攻められる）
 
