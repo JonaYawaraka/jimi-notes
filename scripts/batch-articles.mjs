@@ -73,9 +73,13 @@ const DEFAULT_TOPICS = [
 ]
 
 // args（pick-topics.mjs の出力）があればそれを使い、無ければデフォルト10件。
-const TOPICS = (Array.isArray(args) && args.length)
-  ? args.map((t, i) => ({ ...t, key: t.key || (t.slug || '').replace(/[^a-z]/g, '').slice(0, 3) || ('t' + i) }))
+// ※ Workflow の args は「文字列(生JSON)」で届くので parse する。
+let RAW = args;
+if (typeof RAW === 'string') { try { RAW = JSON.parse(RAW); } catch { RAW = null; } }
+const TOPICS = (Array.isArray(RAW) && RAW.length)
+  ? RAW.map((t, i) => ({ ...t, key: t.key || (t.slug || '').replace(/[^a-z]/g, '').slice(0, 3) || ('t' + i) }))
   : DEFAULT_TOPICS
+log(`TOPICS: ${TOPICS.map(t => t.slug).join(', ')}`)
 
 const ANGLE_SCHEMA = {
   type:'object', additionalProperties:false,
