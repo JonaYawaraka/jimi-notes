@@ -16,13 +16,17 @@
   --measure:680px;       /* 本文の読みやすい行長 */
   font-feature-settings:"palt";
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+/* min-width:0 = flex/grid の子が内容幅でトラックを押し広げて横溢れするのを防ぐ定石 */
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{
   margin:0;background:var(--paper);color:var(--ink);
   font-family:"Archivo","Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;
   font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;width:100%;overflow-wrap:break-word;
 }
+/* 巨大見出しが狭幅で溢れないよう、どの言語でも折り返す */
+h1,h2,h3{overflow-wrap:anywhere;word-break:normal}
 ::selection{background:var(--accent);color:#fff}
 a{color:inherit;text-decoration:none}
 strong,b{font-weight:700;color:var(--ink)}
@@ -62,7 +66,7 @@ p{margin:1em 0}
    ============================================================ */
 .hero{padding:72px 0 36px}
 .hero .eyebrow{margin-bottom:26px;display:block}
-.hero h1{font-size:clamp(38px,6.2vw,76px);line-height:1.08}
+.hero h1{font-size:clamp(27px,6.6vw,76px);line-height:1.08}
 .hero-foot{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end;
   margin-top:44px;padding-top:24px;border-top:1px solid var(--line)}
 .hero-foot .lead{font-size:17px;color:var(--ink-2);max-width:46ch}
