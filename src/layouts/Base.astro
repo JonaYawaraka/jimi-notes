@@ -8,6 +8,8 @@ const siteName = 'Jimi Notes';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#f4f2ec" />
   <title>{title ? `${title} — ${siteName}` : siteName}</title>
   {description && <meta name="description" content={description} />}
   <meta property="og:title" content={title ?? siteName} />
@@ -19,6 +21,10 @@ const siteName = 'Jimi Notes';
     rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
   />
+  <script is:inline>
+    // reduced-motion でなければ図解アニメを有効化（描画前に付与してチラつき防止）
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');
+  </script>
 </head>
 <body>
   <header class="site-head">
@@ -42,5 +48,24 @@ const siteName = 'Jimi Notes';
       <span>© 2026</span>
     </div>
   </footer>
+
+  <script is:inline>
+    if (document.documentElement.classList.contains('anim')) {
+      const all = () => document.querySelectorAll('.article-body .demo');
+      const showAll = () => all().forEach((el) => el.classList.add('is-in'));
+      const reveal = () => {
+        try {
+          if (!('IntersectionObserver' in window)) return showAll();
+          const io = new IntersectionObserver((es) => {
+            for (const e of es) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+          }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+          all().forEach((el) => io.observe(el));
+          // 保険：何らかで反応しなかった図解は数秒後に必ず表示
+          setTimeout(() => all().forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < innerHeight) el.classList.add('is-in'); }), 2500);
+        } catch (_) { showAll(); }
+      };
+      if (document.readyState !== 'loading') reveal(); else addEventListener('DOMContentLoaded', reveal);
+    }
+  </script>
 </body>
 </html>

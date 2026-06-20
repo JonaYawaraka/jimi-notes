@@ -184,3 +184,52 @@ ul.check li::before{content:"";position:absolute;left:0;top:20px;width:11px;heig
 .b-primary{color:var(--accent);border-color:rgba(222,60,36,.4)}
 .b-blog{color:var(--ink-3)}
 .chip{display:inline-block}
+
+/* ============================================================
+   サムネ（バウハウス抽象SVG）＋ アニメーション
+   ============================================================ */
+.jn-thumb{display:block;overflow:hidden;background:var(--paper-2);border:1px solid var(--line)}
+.jn-thumb svg{display:block;width:100%;height:100%}
+
+@media (prefers-reduced-motion: no-preference){
+  .jn-thumb svg .jn-spin{transform-box:fill-box;transform-origin:center;animation:jn-spin 26s linear infinite}
+  .jn-thumb svg .jn-breathe{transform-box:fill-box;transform-origin:center;animation:jn-breathe 6.5s ease-in-out infinite}
+  .jn-thumb svg .jn-float{animation:jn-float 6s ease-in-out infinite}
+  /* hover で少し目を引く */
+  .index-row:hover .jn-thumb svg .jn-spin,.article-key:hover .jn-thumb svg .jn-spin{animation-duration:7s}
+  .index-row:hover .jn-thumb svg .jn-breathe{animation-duration:3.2s}
+}
+@keyframes jn-spin{to{transform:rotate(360deg)}}
+@keyframes jn-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.09)}}
+@keyframes jn-float{0%,100%{transform:translateY(-5px)}50%{transform:translateY(5px)}}
+
+/* 一覧：サムネ列を追加 */
+.index-row{grid-template-columns:150px 1fr auto;align-items:center}
+.idx-thumb{width:150px;aspect-ratio:3/2}
+.index-row:hover .idx-thumb{border-color:var(--accent)}
+@media(max-width:640px){
+  .index-row{grid-template-columns:1fr;gap:14px}
+  .idx-thumb{width:100%;aspect-ratio:16/6}
+}
+
+/* 記事ヘッダーのキービジュアル（横長バナー） */
+.article-key{display:block;width:100%;aspect-ratio:16/5;margin:32px 0 0}
+.article-key .jn-thumb{width:100%;height:100%}
+
+/* ============================================================
+   図解アニメーション：スクロールで現れ、Before→Afterに気づかせる
+   （.anim は JS が付与。no-JS / reduced-motion では常時表示）
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference){
+  .anim .article-body .demo{opacity:0;transform:translateY(16px) scale(.985);
+    transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1)}
+  .anim .article-body .demo.is-in{opacity:1;transform:none}
+  /* ペアの "after"(右) は少し遅れて出す → 変化が際立つ */
+  .anim .article-body .grid.g2 > .demo:nth-child(2){transition-delay:.16s;position:relative}
+  /* after に一度だけ光のスイープ */
+  .anim .article-body .grid.g2 > .demo:nth-child(2)::after{content:"";position:absolute;inset:0;z-index:6;
+    pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.5) 50%,transparent 60%);
+    transform:translateX(-135%)}
+  .anim .article-body .grid.g2 > .demo:nth-child(2).is-in::after{animation:jn-sweep 1s ease .45s 1 forwards}
+}
+@keyframes jn-sweep{from{transform:translateX(-135%)}to{transform:translateX(135%)}}

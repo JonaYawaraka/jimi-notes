@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Thumb from '../components/Thumb.astro';
 
 const fmt = (d) =>
   `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}`;
@@ -33,9 +34,9 @@ const articles = (await getCollection('articles'))
         <section class="index">
           {articles.map((a, i) => (
             <a class="index-row" href={`/articles/${a.id}/`}>
-              <span class="no">{String(i + 1).padStart(2, '0')}</span>
+              <Thumb seed={a.id} class="idx-thumb" />
               <span>
-                <span class="cat">{a.data.category}</span>
+                <span class="cat">{a.data.category} · No.{String(i + 1).padStart(2, '0')}</span>
                 <h3>{a.data.title}</h3>
                 <p class="desc">{a.data.problem}</p>
                 <p class="desc" style="color:var(--ink-3);margin-top:14px;font-size:13px">

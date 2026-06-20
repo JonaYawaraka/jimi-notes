@@ -72,6 +72,11 @@ const DEFAULT_TOPICS = [
             'common alignment mistakes UI optical adjustment icon text baseline'] },
 ]
 
+// args（pick-topics.mjs の出力）があればそれを使い、無ければデフォルト10件。
+const TOPICS = (Array.isArray(args) && args.length)
+  ? args.map((t, i) => ({ ...t, key: t.key || (t.slug || '').replace(/[^a-z]/g, '').slice(0, 3) || ('t' + i) }))
+  : DEFAULT_TOPICS
+
 const ANGLE_SCHEMA = {
   type:'object', additionalProperties:false,
   properties:{
