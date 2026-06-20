@@ -1,116 +1,651 @@
 {
   "_comment": "Jimi Notes 記事ネタの在庫。日次自動化が slug の .md が未存在のものを上から3件選んで生成する。生成済みは content/articles/<slug>.md の存在で判定（status は参考）。",
   "topics": [
-    { "slug": "shadow-depth", "category": "質感", "status": "generating",
+    {
+      "slug": "shadow-depth",
+      "category": "質感",
+      "status": "generating",
       "title": "影が安っぽい——のっぺりを脱する影の設計",
       "problem": "影をつい単一の濃い黒影で付けてしまい、安っぽく・のっぺり見える。",
-      "tags": ["影","シャドウ","エレベーション"],
-      "angles": ["why CSS box shadows look cheap fake single harsh black shadow antipattern","designing realistic layered box-shadow light source color Josh Comeau Tobias Ahlin","material elevation shadow tokens scale dark mode alternatives"] },
-    { "slug": "spacing-rhythm", "category": "余白", "status": "generating",
+      "tags": [
+        "影",
+        "シャドウ",
+        "エレベーション"
+      ],
+      "angles": [
+        "why CSS box shadows look cheap fake single harsh black shadow antipattern",
+        "designing realistic layered box-shadow light source color Josh Comeau Tobias Ahlin",
+        "material elevation shadow tokens scale dark mode alternatives"
+      ]
+    },
+    {
+      "slug": "spacing-rhythm",
+      "category": "余白",
+      "status": "generating",
       "title": "余白がなんとなく——8pxで決める余白とリズム",
       "problem": "余白を感覚で置いてしまい、詰まり/スカスカ・不揃いになる。",
-      "tags": ["余白","スペーシング","リズム"],
-      "angles": ["8 point grid spacing system UI why","spacing scale tokens t-shirt sizes rhythm","whitespace proximity grouping common mistakes"] },
-    { "slug": "type-scale", "category": "タイポ", "status": "generating",
+      "tags": [
+        "余白",
+        "スペーシング",
+        "リズム"
+      ],
+      "angles": [
+        "8 point grid spacing system UI why",
+        "spacing scale tokens t-shirt sizes rhythm",
+        "whitespace proximity grouping common mistakes"
+      ]
+    },
+    {
+      "slug": "type-scale",
+      "category": "タイポ",
+      "status": "generating",
       "title": "フォントサイズが行き当たりばったり——タイプスケールとジャンプ率",
       "problem": "見出し/本文のサイズを都度決めてしまい、階層もリズムも出ない。",
-      "tags": ["タイポ","タイプスケール","階層"],
-      "angles": ["modular typographic scale ratio web 1.25 1.333","type hierarchy contrast jump ratio heading body","fluid typography clamp responsive scale"] },
-    { "slug": "neutral-grey", "category": "色", "status": "generating",
+      "tags": [
+        "タイポ",
+        "タイプスケール",
+        "階層"
+      ],
+      "angles": [
+        "modular typographic scale ratio web 1.25 1.333",
+        "type hierarchy contrast jump ratio heading body",
+        "fluid typography clamp responsive scale"
+      ]
+    },
+    {
+      "slug": "neutral-grey",
+      "category": "色",
+      "status": "generating",
       "title": "グレーが濁る——使えるニュートラルと色の作り方",
       "problem": "グレーやニュートラルが濁って安っぽい。色の選び方に芯がない。",
-      "tags": ["色","グレー","彩度"],
-      "angles": ["why pure grey dull tinted neutrals temperature","creating palette neutrals saturation lightness HSL","refactoring UI greys with hue accessible contrast"] },
-    { "slug": "border-radius", "category": "細部", "status": "generating",
+      "tags": [
+        "色",
+        "グレー",
+        "彩度"
+      ],
+      "angles": [
+        "why pure grey dull tinted neutrals temperature",
+        "creating palette neutrals saturation lightness HSL",
+        "refactoring UI greys with hue accessible contrast"
+      ]
+    },
+    {
+      "slug": "border-radius",
+      "category": "細部",
+      "status": "generating",
       "title": "角丸がバラバラ——半径の統一とネスト",
       "problem": "角丸の半径が要素ごとにバラバラで、入れ子で歪む。",
-      "tags": ["角丸","radius","細部"],
-      "angles": ["border radius consistency design system","radius scale tokens when rounded corners","concentric nested radius inner outer padding rule"] },
-    { "slug": "button-states", "category": "細部", "status": "generating",
+      "tags": [
+        "角丸",
+        "radius",
+        "細部"
+      ],
+      "angles": [
+        "border radius consistency design system",
+        "radius scale tokens when rounded corners",
+        "concentric nested radius inner outer padding rule"
+      ]
+    },
+    {
+      "slug": "button-states",
+      "category": "細部",
+      "status": "generating",
       "title": "ボタンの状態が雑——hover/active/disabled/focusの詰め",
       "problem": "ボタンのhover/active/disabled/focusを詰め切れず、触り心地が安っぽい。",
-      "tags": ["ボタン","状態","インタラクション"],
-      "angles": ["button states hover active focus disabled best practice","interactive feedback affordance micro-interaction","accessible focus-visible disabled contrast WCAG"] },
-    { "slug": "dividers-borders", "category": "細部", "status": "generating",
+      "tags": [
+        "ボタン",
+        "状態",
+        "インタラクション"
+      ],
+      "angles": [
+        "button states hover active focus disabled best practice",
+        "interactive feedback affordance micro-interaction",
+        "accessible focus-visible disabled contrast WCAG"
+      ]
+    },
+    {
+      "slug": "dividers-borders",
+      "category": "細部",
+      "status": "generating",
       "title": "区切り線が安っぽい——ボーダーとセパレータの品",
       "problem": "区切り線やボーダーがどぎつく、画面が安っぽく見える。",
-      "tags": ["ボーダー","区切り線","細部"],
-      "angles": ["hairline dividers borders subtle too heavy","border color opacity low contrast separators","dividers vs spacing card borders when"] },
-    { "slug": "icon-stroke", "category": "細部", "status": "generating",
+      "tags": [
+        "ボーダー",
+        "区切り線",
+        "細部"
+      ],
+      "angles": [
+        "hairline dividers borders subtle too heavy",
+        "border color opacity low contrast separators",
+        "dividers vs spacing card borders when"
+      ]
+    },
+    {
+      "slug": "icon-stroke",
+      "category": "細部",
+      "status": "generating",
       "title": "アイコンが浮く——線幅と光学サイズの揃え方",
       "problem": "アイコンの線幅・サイズがテキストやUIと合わず浮く。",
-      "tags": ["アイコン","線幅","光学調整"],
-      "angles": ["icon stroke width consistency optical size","icon optical balance vs text pixel grid","icon set consistency keyline grid guidelines"] },
-    { "slug": "jp-typography", "category": "タイポ", "status": "generating",
+      "tags": [
+        "アイコン",
+        "線幅",
+        "光学調整"
+      ],
+      "angles": [
+        "icon stroke width consistency optical size",
+        "icon optical balance vs text pixel grid",
+        "icon set consistency keyline grid guidelines"
+      ]
+    },
+    {
+      "slug": "jp-typography",
+      "category": "タイポ",
+      "status": "generating",
       "title": "日本語が読みにくい——行間・約物・ジャンプ率",
       "problem": "日本語の行間・約物アキ・字間が整わず、読みにくく素人っぽい。",
-      "tags": ["日本語","組版","palt"],
-      "angles": ["Japanese web typography line-height letter-spacing 行間","CSS font-feature-settings palt 約物 詰め kerning","Japanese hierarchy line length 文字組 best practice"] },
-    { "slug": "alignment-grid", "category": "レイアウト", "status": "generating",
+      "tags": [
+        "日本語",
+        "組版",
+        "palt"
+      ],
+      "angles": [
+        "Japanese web typography line-height letter-spacing 行間",
+        "CSS font-feature-settings palt 約物 詰め kerning",
+        "Japanese hierarchy line length 文字組 best practice"
+      ]
+    },
+    {
+      "slug": "alignment-grid",
+      "category": "レイアウト",
+      "status": "generating",
       "title": "微妙にズレる——整列とグリッドの規律",
       "problem": "要素が微妙に揃わず、全体がプロっぽくならない。",
-      "tags": ["整列","グリッド","レイアウト"],
-      "angles": ["alignment principles grid systems optical","edge baseline grid columns gutters discipline","common alignment mistakes optical adjustment"] },
-
-    { "slug": "contrast-hierarchy", "category": "色", "status": "pending",
+      "tags": [
+        "整列",
+        "グリッド",
+        "レイアウト"
+      ],
+      "angles": [
+        "alignment principles grid systems optical",
+        "edge baseline grid columns gutters discipline",
+        "common alignment mistakes optical adjustment"
+      ]
+    },
+    {
+      "slug": "contrast-hierarchy",
+      "category": "色",
+      "status": "pending",
       "title": "メリハリがない——コントラストで階層を作る",
       "problem": "全部同じ強さで、どこを見ればいいか分からない平板な画面になる。",
-      "tags": ["コントラスト","階層","視線誘導"],
-      "angles": ["visual hierarchy contrast size weight color UI","de-emphasize secondary text color weight","focal point contrast scanning F pattern"] },
-    { "slug": "form-fields", "category": "細部", "status": "pending",
+      "tags": [
+        "コントラスト",
+        "階層",
+        "視線誘導"
+      ],
+      "angles": [
+        "visual hierarchy contrast size weight color UI",
+        "de-emphasize secondary text color weight",
+        "focal point contrast scanning F pattern"
+      ]
+    },
+    {
+      "slug": "form-fields",
+      "category": "細部",
+      "status": "pending",
       "title": "フォームが安っぽい——入力欄の質を上げる",
       "problem": "input/selectの作り込みが甘く、フォーム全体が素人っぽい。",
-      "tags": ["フォーム","入力欄","UI"],
-      "angles": ["form input field design best practice label placeholder","input states focus error filled accessibility","form ux spacing alignment label position"] },
-    { "slug": "card-design", "category": "レイアウト", "status": "pending",
+      "tags": [
+        "フォーム",
+        "入力欄",
+        "UI"
+      ],
+      "angles": [
+        "form input field design best practice label placeholder",
+        "input states focus error filled accessibility",
+        "form ux spacing alignment label position"
+      ]
+    },
+    {
+      "slug": "card-design",
+      "category": "レイアウト",
+      "status": "pending",
       "title": "カードが平凡——情報カードの設計",
       "problem": "カードがただの枠で、情報の優先順位も質感も出ていない。",
-      "tags": ["カード","レイアウト","階層"],
-      "angles": ["card UI design hierarchy padding shadow border","card content structure image title meta","card grid spacing consistency design"] },
-    { "slug": "empty-loading-states", "category": "細部", "status": "pending",
+      "tags": [
+        "カード",
+        "レイアウト",
+        "階層"
+      ],
+      "angles": [
+        "card UI design hierarchy padding shadow border",
+        "card content structure image title meta",
+        "card grid spacing consistency design"
+      ]
+    },
+    {
+      "slug": "empty-loading-states",
+      "category": "細部",
+      "status": "pending",
       "title": "空っぽ・読込中が雑——空状態とローディング",
       "problem": "空状態やローディングを後回しにして、体験が安っぽくなる。",
-      "tags": ["空状態","ローディング","スケルトン"],
-      "angles": ["empty state design best practice illustration copy","skeleton screen loading vs spinner UX","first-time empty state onboarding guidance"] },
-    { "slug": "photo-crop", "category": "画像", "status": "pending",
+      "tags": [
+        "空状態",
+        "ローディング",
+        "スケルトン"
+      ],
+      "angles": [
+        "empty state design best practice illustration copy",
+        "skeleton screen loading vs spinner UX",
+        "first-time empty state onboarding guidance"
+      ]
+    },
+    {
+      "slug": "photo-crop",
+      "category": "画像",
+      "status": "pending",
       "title": "写真の切り方が決まらない——トリミングと被写体配置",
       "problem": "写真のトリミングや被写体位置が決まらず、収まりが悪い。",
-      "tags": ["写真","トリミング","構図"],
-      "angles": ["image cropping composition rule of thirds focal","object-fit object-position CSS crop responsive","aspect ratio consistency image grid design"] },
-    { "slug": "data-numbers", "category": "タイポ", "status": "pending",
+      "tags": [
+        "写真",
+        "トリミング",
+        "構図"
+      ],
+      "angles": [
+        "image cropping composition rule of thirds focal",
+        "object-fit object-position CSS crop responsive",
+        "aspect ratio consistency image grid design"
+      ]
+    },
+    {
+      "slug": "data-numbers",
+      "category": "タイポ",
+      "status": "pending",
       "title": "数字が揃わない——データと数値の組版",
       "problem": "価格やデータの数字が揃わず、桁も読みづらい。",
-      "tags": ["数字","組版","tabular"],
-      "angles": ["tabular figures font-feature-settings tnum numbers align","data table number alignment right decimal","price typography hierarchy currency design"] },
-    { "slug": "easing-motion", "category": "細部", "status": "pending",
+      "tags": [
+        "数字",
+        "組版",
+        "tabular"
+      ],
+      "angles": [
+        "tabular figures font-feature-settings tnum numbers align",
+        "data table number alignment right decimal",
+        "price typography hierarchy currency design"
+      ]
+    },
+    {
+      "slug": "easing-motion",
+      "category": "細部",
+      "status": "pending",
       "title": "動きがカクつく——イージングとトランジションの質",
       "problem": "transitionが直線的・速すぎ/遅すぎで、動きが安っぽい。",
-      "tags": ["モーション","イージング","トランジション"],
-      "angles": ["easing curves cubic-bezier natural motion UI","transition duration timing best practice ms","motion choreography enter exit micro-interaction"] },
-    { "slug": "link-styling", "category": "タイポ", "status": "pending",
+      "tags": [
+        "モーション",
+        "イージング",
+        "トランジション"
+      ],
+      "angles": [
+        "easing curves cubic-bezier natural motion UI",
+        "transition duration timing best practice ms",
+        "motion choreography enter exit micro-interaction"
+      ]
+    },
+    {
+      "slug": "link-styling",
+      "category": "タイポ",
+      "status": "pending",
       "title": "リンクが浮く・埋もれる——テキストリンクの設計",
       "problem": "リンクの色・下線の見せ方が雑で、浮くか埋もれるかになる。",
-      "tags": ["リンク","タイポ","可読性"],
-      "angles": ["text link styling underline color best practice","link states hover visited focus accessibility","link affordance vs body text contrast"] },
-    { "slug": "table-readability", "category": "レイアウト", "status": "pending",
+      "tags": [
+        "リンク",
+        "タイポ",
+        "可読性"
+      ],
+      "angles": [
+        "text link styling underline color best practice",
+        "link states hover visited focus accessibility",
+        "link affordance vs body text contrast"
+      ]
+    },
+    {
+      "slug": "table-readability",
+      "category": "レイアウト",
+      "status": "pending",
       "title": "表が読みにくい——テーブルの可読性",
       "problem": "罫線だらけ/詰まりすぎで表が読みづらい。",
-      "tags": ["テーブル","可読性","罫線"],
-      "angles": ["data table design readability zebra borders spacing","table alignment header sticky scan","table density padding row height best practice"] },
-    { "slug": "tags-badges", "category": "細部", "status": "pending",
+      "tags": [
+        "テーブル",
+        "可読性",
+        "罫線"
+      ],
+      "angles": [
+        "data table design readability zebra borders spacing",
+        "table alignment header sticky scan",
+        "table density padding row height best practice"
+      ]
+    },
+    {
+      "slug": "tags-badges",
+      "category": "細部",
+      "status": "pending",
       "title": "タグ・バッジが子どもっぽい——ラベルの設計",
       "problem": "タグやバッジの色・形・サイズが子どもっぽく安っぽい。",
-      "tags": ["タグ","バッジ","チップ"],
-      "angles": ["badge tag chip design subtle status color","label pill size padding radius typography","status color semantic accessible badge"] },
-    { "slug": "dark-mode-pitfalls", "category": "色", "status": "pending",
+      "tags": [
+        "タグ",
+        "バッジ",
+        "チップ"
+      ],
+      "angles": [
+        "badge tag chip design subtle status color",
+        "label pill size padding radius typography",
+        "status color semantic accessible badge"
+      ]
+    },
+    {
+      "slug": "dark-mode-pitfalls",
+      "category": "色",
+      "status": "pending",
       "title": "ダークモードが映えない——落とし穴と作り方",
       "problem": "ただ反転しただけで、影も色も映えないダークモードになる。",
-      "tags": ["ダークモード","色","質感"],
-      "angles": ["dark mode design pitfalls pure black elevation","dark theme color desaturate surface elevation overlay","dark mode shadow alternative border glow depth"] },
-    { "slug": "decorative-details", "category": "質感", "status": "pending",
+      "tags": [
+        "ダークモード",
+        "色",
+        "質感"
+      ],
+      "angles": [
+        "dark mode design pitfalls pure black elevation",
+        "dark theme color desaturate surface elevation overlay",
+        "dark mode shadow alternative border glow depth"
+      ]
+    },
+    {
+      "slug": "decorative-details",
+      "category": "質感",
+      "status": "pending",
       "title": "あしらいが学生っぽい——装飾線とディテールの品",
       "problem": "飾り線やあしらいが過剰/ダサく、全体が学生っぽくなる。",
-      "tags": ["あしらい","装飾","ディテール"],
-      "angles": ["decorative elements restraint UI ornament vs clean","accent details lines dots subtle premium feel","when to add decoration negative space discipline"] }
+      "tags": [
+        "あしらい",
+        "装飾",
+        "ディテール"
+      ],
+      "angles": [
+        "decorative elements restraint UI ornament vs clean",
+        "accent details lines dots subtle premium feel",
+        "when to add decoration negative space discipline"
+      ]
+    },
+    {
+      "slug": "focus-rings",
+      "category": "細部",
+      "status": "pending",
+      "title": "フォーカスが消えてる——focusリングの設計",
+      "problem": "outlineを消してアクセシビリティを壊しがち。",
+      "tags": [
+        "フォーカス",
+        "a11y",
+        "状態"
+      ],
+      "angles": [
+        "focus-visible ring design accessibility outline",
+        "keyboard focus indicator contrast best practice",
+        "custom focus styles vs default outline"
+      ]
+    },
+    {
+      "slug": "z-index-stacking",
+      "category": "レイアウト",
+      "status": "pending",
+      "title": "重なりがバグる——z-indexとレイヤー管理",
+      "problem": "z-indexを場当たりで盛って破綻する。",
+      "tags": [
+        "z-index",
+        "重なり",
+        "スタッキング"
+      ],
+      "angles": [
+        "z-index management scale stacking context",
+        "stacking context creation pitfalls CSS",
+        "layer system tokens z-index strategy"
+      ]
+    },
+    {
+      "slug": "modal-dialog",
+      "category": "細部",
+      "status": "pending",
+      "title": "モーダルが雑——ダイアログの作法",
+      "problem": "オーバーレイ・フォーカストラップ・閉じ方が甘い。",
+      "tags": [
+        "モーダル",
+        "ダイアログ",
+        "UI"
+      ],
+      "angles": [
+        "modal dialog design best practice focus trap",
+        "overlay scrim backdrop close affordance",
+        "accessible dialog aria role esc focus"
+      ]
+    },
+    {
+      "slug": "micro-copy",
+      "category": "タイポ",
+      "status": "pending",
+      "title": "文言がダサい——マイクロコピーの質",
+      "problem": "ボタンや空状態の文言が機械的で冷たい。",
+      "tags": [
+        "マイクロコピー",
+        "UXライティング",
+        "文言"
+      ],
+      "angles": [
+        "microcopy ux writing button labels best practice",
+        "empty state error message tone voice",
+        "cta copy clarity actionable microcopy"
+      ]
+    },
+    {
+      "slug": "toggle-checkbox-radio",
+      "category": "細部",
+      "status": "pending",
+      "title": "チェック類が安っぽい——トグル/チェック/ラジオ",
+      "problem": "選択UIの当たり判定や状態表現が雑。",
+      "tags": [
+        "フォーム",
+        "トグル",
+        "選択"
+      ],
+      "angles": [
+        "toggle switch checkbox radio design best practice",
+        "custom form control accessible states",
+        "selection control size hit target feedback"
+      ]
+    },
+    {
+      "slug": "nav-header",
+      "category": "レイアウト",
+      "status": "pending",
+      "title": "ナビが散らかる——ヘッダーとナビ設計",
+      "problem": "項目過多・階層不明でヘッダーが散らかる。",
+      "tags": [
+        "ナビ",
+        "ヘッダー",
+        "IA"
+      ],
+      "angles": [
+        "navigation header design best practice hierarchy",
+        "sticky header nav patterns UX",
+        "menu information architecture grouping"
+      ]
+    },
+    {
+      "slug": "footer-design",
+      "category": "レイアウト",
+      "status": "pending",
+      "title": "フッターが投げやり——フッターの設計",
+      "problem": "フッターを適当にして情報が迷子になる。",
+      "tags": [
+        "フッター",
+        "レイアウト",
+        "IA"
+      ],
+      "angles": [
+        "website footer design best practice structure",
+        "footer link grouping columns hierarchy",
+        "footer content legal nav newsletter"
+      ]
+    },
+    {
+      "slug": "pricing-table",
+      "category": "レイアウト",
+      "status": "pending",
+      "title": "料金表が読めない——価格テーブルの設計",
+      "problem": "プランの差と推しが伝わらない料金表。",
+      "tags": [
+        "料金表",
+        "比較",
+        "CV"
+      ],
+      "angles": [
+        "pricing table design best practice highlight plan",
+        "comparison table readability tiers",
+        "pricing psychology anchor recommended plan"
+      ]
+    },
+    {
+      "slug": "tooltip-popover",
+      "category": "細部",
+      "status": "pending",
+      "title": "ツールチップが邪魔——補足UIの設計",
+      "problem": "ツールチップ/ポップオーバーの出方が雑。",
+      "tags": [
+        "ツールチップ",
+        "ポップオーバー",
+        "UI"
+      ],
+      "angles": [
+        "tooltip popover design best practice positioning",
+        "tooltip accessibility hover focus delay",
+        "popover vs tooltip when content"
+      ]
+    },
+    {
+      "slug": "image-perf",
+      "category": "画像",
+      "status": "pending",
+      "title": "画像が重い——最適化と遅延読み込み",
+      "problem": "画像が重く・ぼやけ、表示も遅い。",
+      "tags": [
+        "画像",
+        "最適化",
+        "パフォーマンス"
+      ],
+      "angles": [
+        "responsive image srcset sizes webp avif",
+        "lazy loading images LCP performance",
+        "image compression quality blur placeholder"
+      ]
+    },
+    {
+      "slug": "scroll-experience",
+      "category": "細部",
+      "status": "pending",
+      "title": "スクロールが不快——スクロール体験の設計",
+      "problem": "カクつき・固定要素・スクロールジャックで不快。",
+      "tags": [
+        "スクロール",
+        "UX",
+        "パフォーマンス"
+      ],
+      "angles": [
+        "smooth scroll behavior sticky scroll-margin",
+        "scroll snap UX best practice",
+        "scroll performance jank sticky header"
+      ]
+    },
+    {
+      "slug": "accordion-disclosure",
+      "category": "細部",
+      "status": "pending",
+      "title": "開閉が分かりにくい——アコーディオン/FAQ",
+      "problem": "開閉の手がかりとアニメが弱い。",
+      "tags": [
+        "アコーディオン",
+        "FAQ",
+        "開閉"
+      ],
+      "angles": [
+        "accordion disclosure design best practice",
+        "expand collapse affordance icon animation",
+        "faq accordion accessibility details summary"
+      ]
+    },
+    {
+      "slug": "search-input",
+      "category": "細部",
+      "status": "pending",
+      "title": "検索が使いにくい——検索UIの設計",
+      "problem": "検索ボックスやサジェストが弱い。",
+      "tags": [
+        "検索",
+        "入力",
+        "UI"
+      ],
+      "angles": [
+        "search input design best practice affordance",
+        "search suggestions autocomplete UX",
+        "search empty no-results state"
+      ]
+    },
+    {
+      "slug": "tab-segmented",
+      "category": "細部",
+      "status": "pending",
+      "title": "タブが迷子——タブ/セグメントの設計",
+      "problem": "選択中が分かりにくいタブ・セグメント。",
+      "tags": [
+        "タブ",
+        "セグメント",
+        "ナビ"
+      ],
+      "angles": [
+        "tab design best practice active indicator",
+        "segmented control vs tabs UX",
+        "tab accessibility keyboard aria"
+      ]
+    },
+    {
+      "slug": "status-feedback",
+      "category": "細部",
+      "status": "pending",
+      "title": "結果が伝わらない——トースト/通知/状態",
+      "problem": "成功/失敗/進行のフィードバックが弱い。",
+      "tags": [
+        "通知",
+        "トースト",
+        "フィードバック"
+      ],
+      "angles": [
+        "toast notification design best practice timing",
+        "success error feedback inline vs toast",
+        "loading progress feedback UX patterns"
+      ]
+    },
+    {
+      "slug": "whitespace-density",
+      "category": "余白",
+      "status": "pending",
+      "title": "詰め込みすぎ——情報密度と余白",
+      "problem": "情報を詰め込みすぎて圧迫感が出る。",
+      "tags": [
+        "余白",
+        "密度",
+        "可読性"
+      ],
+      "angles": [
+        "information density whitespace UI design",
+        "content density comfortable reading spacing",
+        "reduce clutter visual breathing room"
+      ]
+    }
   ]
 }

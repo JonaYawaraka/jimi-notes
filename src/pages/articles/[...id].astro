@@ -31,7 +31,7 @@ const fmt = (d) =>
         </div>
       </header>
 
-      <Thumb seed={article.id} class="article-key" />
+      <Thumb seed={article.id} category={article.data.category} tags={article.data.tags} class="article-key" />
 
       <div class="article-body">
         <Content />

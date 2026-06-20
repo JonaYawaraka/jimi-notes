@@ -34,7 +34,7 @@ const articles = (await getCollection('articles'))
         <section class="index">
           {articles.map((a, i) => (
             <a class="index-row" href={`/articles/${a.id}/`}>
-              <Thumb seed={a.id} class="idx-thumb" />
+              <Thumb seed={a.id} category={a.data.category} tags={a.data.tags} class="idx-thumb" />
               <span>
                 <span class="cat">{a.data.category} · No.{String(i + 1).padStart(2, '0')}</span>
                 <h3>{a.data.title}</h3>
