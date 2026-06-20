@@ -5,41 +5,47 @@ import Base from '../layouts/Base.astro';
 const fmt = (d) =>
   `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}`;
 
-// draft を除外し、新しい順に
 const articles = (await getCollection('articles'))
   .filter((a) => !a.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <Base
   title={null}
-  description="派手なトレンドではなく、毎回マジで困る『地味な急所』を、根拠と実演で解くデザインノート。"
+  description="派手なトレンドではなく、毎回マジで困る『地味な急所』を、根拠と図版で解くデザインノート。"
 >
-  <main class="wrap">
-    <section style="padding:64px 0 20px;text-align:center">
-      <div class="eyebrow">Design — the boring parts</div>
-      <h1>地味だけど本当に困る<br /><span class="grad">デザインの悩み</span>を解く</h1>
-      <p class="dim" style="max-width:600px;margin:0 auto">
-        影の付け方、余白の決め方、背景に逃げる癖——。派手なトレンドではない「毎回マジで困る急所」を、
-        出典付きのリサーチと、コピペできるライブデモで一つずつ潰していくノート。
-      </p>
+  <main class="frame">
+    <section class="hero">
+      <span class="eyebrow">Design — the boring parts</span>
+      <h1>地味だけど本当に困る<br /><span class="grad">デザインの悩み</span>を、解く。</h1>
+      <div class="hero-foot">
+        <p class="lead">
+          影の付け方、余白の決め方、背景に逃げる癖——。派手なトレンドではない「毎回マジで困る急所」を、
+          出典付きのリサーチと、コピペできる図版で一つずつ潰していくノート。
+        </p>
+        <p class="count">{articles.length} 記事 / 検証済み</p>
+      </div>
     </section>
 
     {
       articles.length === 0 ? (
-        <p class="dim" style="text-align:center;padding:40px 0">
-          まだ公開記事はありません（下書き準備中）。
-        </p>
+        <p class="dim" style="padding:60px 0">まだ公開記事はありません（下書き準備中）。</p>
       ) : (
-        <div class="cards">
-          {articles.map((a) => (
-            <a class="acard" href={`/articles/${a.id}/`}>
-              <span class="cat">{a.data.category}</span>
-              <h3>{a.data.title}</h3>
-              <p>{a.data.problem}</p>
-              <div class="when">{fmt(a.data.date)}{a.data.sources ? ` ・ ${a.data.sources}ソース裏取り` : ''}</div>
+        <section class="index">
+          {articles.map((a, i) => (
+            <a class="index-row" href={`/articles/${a.id}/`}>
+              <span class="no">{String(i + 1).padStart(2, '0')}</span>
+              <span>
+                <span class="cat">{a.data.category}</span>
+                <h3>{a.data.title}</h3>
+                <p class="desc">{a.data.problem}</p>
+                <p class="desc" style="color:var(--ink-3);margin-top:14px;font-size:13px">
+                  {fmt(a.data.date)}{a.data.sources ? ` ・ ${a.data.sources}ソース裏取り` : ''}
+                </p>
+              </span>
+              <span class="arrow">→</span>
             </a>
           ))}
-        </div>
+        </section>
       )
     }
   </main>

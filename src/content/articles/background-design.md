@@ -93,8 +93,8 @@ draft: false
 **WCAG最低基準を物差しにする**（背景craft全般の土台、一次標準）：
 
 <div class="grid g2">
-  <div class="card"><h4>本文テキスト</h4><p style="font-size:26px;color:#fff">コントラスト比 4.5:1</p></div>
-  <div class="card"><h4>大見出し（18pt / 14pt太字〜）</h4><p style="font-size:26px;color:#fff">3:1</p></div>
+  <div class="card"><h4>本文テキスト</h4><p style="font-size:34px;font-weight:800;color:var(--accent);letter-spacing:-.02em">4.5 : 1</p></div>
+  <div class="card"><h4>大見出し（18pt / 14pt太字〜）</h4><p style="font-size:34px;font-weight:800;color:var(--accent);letter-spacing:-.02em">3 : 1</p></div>
 </div>
 
 ### 複雑背景の上にテキスト → スクリム

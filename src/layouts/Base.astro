@@ -13,23 +13,33 @@ const siteName = 'Jimi Notes';
   <meta property="og:title" content={title ?? siteName} />
   {description && <meta property="og:description" content={description} />}
   <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+  />
 </head>
 <body>
   <header class="site-head">
-    <div class="wrap">
-      <a class="brand" href="/">
-        Jimi Notes
-        <small>地味だけど本当に困るデザインの悩み</small>
+    <div class="frame">
+      <a class="brand" href="/" aria-label="Jimi Notes home">
+        <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>
+          <span class="word">Jimi Notes</span>
+          <span class="tag">地味だけど本当に困るデザインの悩み</span>
+        </span>
       </a>
+      <span class="head-note">Grid-built design notes</span>
     </div>
   </header>
 
   <slot />
 
   <footer class="site-foot">
-    <div class="wrap">
-      Jimi Notes — 根拠（リサーチ）＋実演（ライブデモ）で、地味な悩みを解く。<br />
-      <span class="dim">各記事の背景はすべてCSS/SVGで描画。語る手法をサイト自身が実演しています。</span>
+    <div class="frame">
+      <span>Jimi Notes — 根拠（リサーチ）＋実演（図版）で、地味な悩みを解く。</span>
+      <span>© 2026</span>
     </div>
   </footer>
 </body>

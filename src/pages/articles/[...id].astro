@@ -17,16 +17,18 @@ const fmt = (d) =>
   `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
 ---
 <Base title={article.data.title} description={article.data.problem}>
-  <main class="wrap">
-    <article style="padding:54px 0 0">
-      <div class="kicker" style="margin-top:0">{article.data.category}</div>
-      <h1>{article.data.title}</h1>
-      <p class="dim" style="font-size:17px">{article.data.problem}</p>
-      <div class="meta-row">
-        <span class="chip">{fmt(article.data.date)}</span>
-        {article.data.sources && <span class="chip">{article.data.sources}ソース・検証済み</span>}
-        {article.data.tags.map((t) => <span class="chip">#{t}</span>)}
-      </div>
+  <main class="frame">
+    <article>
+      <header class="article-head full">
+        <span class="eyebrow">{article.data.category}</span>
+        <h1>{article.data.title}</h1>
+        <p class="deck">{article.data.problem}</p>
+        <div class="meta-row">
+          <span class="chip">{fmt(article.data.date)}</span>
+          {article.data.sources && <span class="chip">{article.data.sources}ソース・検証済み</span>}
+          {article.data.tags.length > 0 && <span class="chip">{article.data.tags.join(' / ')}</span>}
+        </div>
+      </header>
 
       <div class="article-body">
         <Content />
