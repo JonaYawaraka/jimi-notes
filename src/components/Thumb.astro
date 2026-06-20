@@ -18,7 +18,18 @@ const jx = Math.round(rnd() * 16 - 8);
 
 // --- モチーフ選択（slug/tags/category のキーワード → カテゴリfallback） ---
 const s = `${seed} ${tags.join(' ')} ${category}`.toLowerCase();
+// 既知記事は明示マップで確実に（タグのキーワード衝突を回避）。新記事は下のヒューリスティック。
+const SLUG_MOTIF = {
+  'background-design': 'depth', 'shadow-depth': 'depth', 'spacing-rhythm': 'spacing',
+  'type-scale': 'scale', 'neutral-grey': 'swatches', 'border-radius': 'radius',
+  'button-states': 'button', 'dividers-borders': 'divider', 'icon-stroke': 'icons',
+  'jp-typography': 'textlines', 'alignment-grid': 'align', 'contrast-hierarchy': 'scale',
+  'form-fields': 'field', 'card-design': 'layers', 'empty-loading-states': 'layers',
+  'photo-crop': 'crop', 'data-numbers': 'table', 'easing-motion': 'motion',
+  'link-styling': 'link', 'table-readability': 'table', 'tags-badges': 'pill',
+};
 function chooseMotif() {
+  if (SLUG_MOTIF[seed]) return SLUG_MOTIF[seed];
   const m = [
     [/shadow|影|elevation|depth/, 'depth'],
     [/radius|角丸|円/, 'radius'],

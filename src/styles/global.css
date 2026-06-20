@@ -212,9 +212,9 @@ ul.check li::before{content:"";position:absolute;left:0;top:20px;width:11px;heig
   .idx-thumb{width:100%;aspect-ratio:16/6}
 }
 
-/* 記事ヘッダーのキービジュアル（横長バナー） */
-.article-key{display:block;width:100%;aspect-ratio:16/5;margin:32px 0 0}
-.article-key .jn-thumb{width:100%;height:100%}
+/* 記事ヘッダーのキービジュアル。3:2でコンテイン＝モチーフを見切らず完全表示 */
+.article-key{display:block;width:min(620px,100%);aspect-ratio:3/2;margin:32px 0 0}
+@media(max-width:640px){.article-key{aspect-ratio:16/10}}
 
 /* ============================================================
    図解アニメーション：スクロールで現れ、Before→Afterに気づかせる
