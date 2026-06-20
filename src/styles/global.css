@@ -118,9 +118,11 @@ p{margin:1em 0}
 .article-body code{font-family:"SF Mono",ui-monospace,Menlo,monospace}
 .article-body :not(pre) > code{background:var(--paper-2);border:1px solid var(--line);padding:1px 6px;border-radius:4px;font-size:.88em}
 
-/* 図版 breakout：本文より広く中央に */
-.article-body :is(.grid,.demo,table){width:min(94vw,980px);max-width:980px;margin-left:50%;transform:translateX(-50%)}
-@media(max-width:1040px){.article-body :is(.grid,.demo,table){width:100%;margin-left:0;transform:none}}
+/* 図版 breakout：本文より広く中央に。
+   直接の子のみ（> ）に限定。.grid 内にネストした .demo まで効くと二重transformで
+   ワイド画面で画面外に溢れるため（≤1040pxでは無効化されるので狭幅検査では出ない）。 */
+.article-body > :is(.grid,.demo,table){width:min(94vw,980px);max-width:980px;margin-left:50%;transform:translateX(-50%)}
+@media(max-width:1040px){.article-body > :is(.grid,.demo,table){width:100%;margin-left:0;transform:none}}
 
 .back{display:inline-block;margin:72px 0 0;padding-top:24px;border-top:1px solid var(--line);
   width:100%;color:var(--ink-2);font-size:14px;font-weight:600;letter-spacing:.02em}

@@ -190,7 +190,7 @@ draft: false
 
 <div class="grid g2">
   <div class="card"><h4>本文テキスト</h4><p style="font-size:34px;font-weight:800;color:var(--accent);letter-spacing:-.02em">4.5 : 1</p></div>
-  <div class="card"><h4>大見出し（18pt / 14pt太字〜）</h4><p style="font-size:34px;font-weight:800;color:var(--accent);letter-spacing:-.02em">3 : 1</p></div>
+  <div class="card"><h4>大見出し（24px / 太字18.66px〜）</h4><p style="font-size:34px;font-weight:800;color:var(--accent);letter-spacing:-.02em">3 : 1</p></div>
 </div>
 
 ### 複雑背景の上にテキスト → スクリム

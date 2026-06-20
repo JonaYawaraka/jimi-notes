@@ -1,5 +1,5 @@
 ---
-title: "余白がなんとなく——8ptで決める余白とリズム"
+title: "余白がなんとなく——8pxで決める余白とリズム"
 problem: "余白を感覚で置いてしまい、詰まり/スカスカ・不揃いになる。"
 category: 余白
 tags: [余白, スペーシング, リズム]
@@ -50,7 +50,7 @@ draft: false
 
 ## 結論
 
-プロは余白を感覚で置かない。まず「8の倍数(8/16/24/32/48…)」をトークン化して全 padding・margin・gap をそれに吸着させ、細部だけ 4pt のハーフステップを許す。その上で「内側の余白 ≤ 外側の余白(internal ≤ external)」を絶対ルールにしてグルーピングを成立させ、上に行くほど刻みが粗くなる非線形スケールで目分量を排除する。「なんとなく」が消えるのは、この3点を仕組みにした時だけだ。
+プロは余白を感覚で置かない。まず「8の倍数(8/16/24/32/48…)」をトークン化して全 padding・margin・gap をそれに吸着させ、細部だけ 4px のハーフステップを許す。その上で「内側の余白 ≤ 外側の余白(internal ≤ external)」を絶対ルールにしてグルーピングを成立させ、上に行くほど刻みが粗くなる非線形スケールで目分量を排除する。「なんとなく」が消えるのは、この3点を仕組みにした時だけだ。
 
 ## 01 — 余白を8の倍数トークンに吸着させる
 
@@ -102,10 +102,10 @@ draft: false
 
 ## 05 — vertical rhythm:line-heightを8(または4)の倍数に固定
 
-font-size はデバイスで 14/15/18/21px と変動してよいが、line-height を 8 の倍数(8/16/24/32、許容で 4 の倍数の 20/24/28)に固定すると、テキストブロックの高さが 8pt グリッドに乗り、縦のリズムが揃う。タイポ系と余白系が同じ数列で整合するのがポイント。1.45 のような端数倍率はグリッドから外れ、行ごとに微妙にズレる。
+font-size はデバイスで 14/15/18/21px と変動してよいが、line-height を 8 の倍数(8/16/24/32、許容で 4 の倍数の 20/24/28)に固定すると、テキストブロックの高さが 8px グリッドに乗り、縦のリズムが揃う。タイポ系と余白系が同じ数列で整合するのがポイント。1.45 のような端数倍率はグリッドから外れ、行ごとに微妙にズレる。
 
 <div class="grid g2">
-  <div class="demo"><div class="canvas sp-grid-bg"><div class="sp-rhythm sp-bad-rhythm"><h5>見出し</h5><p>端数のline-heightで<br>行が赤グリッドから<br>少しずつズレる</p></div></div><div class="label">✗ line-height:1.45 等の端数 → 8ptグリッドに乗らない</div></div>
+  <div class="demo"><div class="canvas sp-grid-bg"><div class="sp-rhythm sp-bad-rhythm"><h5>見出し</h5><p>端数のline-heightで<br>行が赤グリッドから<br>少しずつズレる</p></div></div><div class="label">✗ line-height:1.45 等の端数 → 8pxグリッドに乗らない</div></div>
   <div class="demo"><div class="canvas sp-grid-bg"><div class="sp-rhythm sp-good-rhythm"><h5>見出し</h5><p>line-heightを24pxに<br>固定すると各行が<br>グリッド線に乗る</p></div></div><div class="label">✓ line-height:24px 固定 → 行が赤グリッドに整列</div></div>
 </div>
 
@@ -125,14 +125,14 @@ Web は構造上どうしても余白不足になりがちだ。詰めた状態�
 
 ## 実装スニペット
 
-非線形 8pt スケールを CSS custom properties で定義する(Refactoring UI 流)。20px や 36px のような中間値はスケールに無い限り使わない。
+非線形 8px スケールを CSS custom properties で定義する(Refactoring UI 流)。20px や 36px のような中間値はスケールに無い限り使わない。
 
 ```css
 :root {
   /* 下は細かく、上は粗く(隣接 ≥ 約25%差) */
   --space-1: 4px;   /* 密結合: アイコン↔テキスト */
   --space-2: 8px;   /* 関連要素・コンポーネント内 */
-  --space-3: 12px;  /* 4pt half-step */
+  --space-3: 12px;  /* 4px half-step */
   --space-4: 16px;  /* 標準gap・カードpadding */
   --space-6: 24px;  /* コンテナ内の別要素 */
   --space-8: 32px;  /* セクション区切り */
@@ -156,7 +156,7 @@ internal ≤ external を守ったカード+フォーム。内側 4px < 外側 2
 .field input { display: block; width: 100%; }
 ```
 
-vertical rhythm:line-height を 8 の倍数に固定し、余白も 8pt で刻む。縦 margin は rem、横 padding は px が原則。
+vertical rhythm:line-height を 8 の倍数に固定し、余白も 8px で刻む。縦 margin は rem、横 padding は px が原則。
 
 ```css
 body { font-size: 1rem; }                                            /* 16px */
@@ -181,7 +181,7 @@ px / rem の使い分け + タッチターゲット最小 48×48px・間隔 8px(
 ## チェックリスト
 
 <ul class="check">
-  <li>すべての padding / margin / gap が 8 の倍数(8/16/24/32/48…)に乗っているか。細部の調整だけ 4pt ハーフステップに留めているか。</li>
+  <li>すべての padding / margin / gap が 8 の倍数(8/16/24/32/48…)に乗っているか。細部の調整だけ 4px ハーフステップに留めているか。</li>
   <li>7px・13px・15px・20px などスケール外の任意値が紛れていないか。</li>
   <li>どの塊も internal ≤ external か(padding ≤ それを隔てる margin)。グループ内 < グループ間になっているか。</li>
   <li>ラベルが「上のフィールド」より「自分の入力欄」に近いか。</li>
@@ -195,7 +195,7 @@ px / rem の使い分け + タッチターゲット最小 48×48px・間隔 8px(
 
 ## 限界 / 出典
 
-<div class="note"><b>正直な但し書き：</b>「主要解像度が8で割り切れる」という8pt採用の根拠は spec.fm の主張で、デバイスが多様化した現在は装飾的理由に近い(本質は選択肢を減らす一貫性)。internal ≤ external のうち「padding ≤ margin」という厳密な不等式は Cieden の定式化で、Refactoring UI の原文は「グループの周囲の余白 > 内側の余白」とより緩い。px vs rem 指針は Josh Comeau 個人の推奨で、固定サイズのバナーでは px 中心で問題ない。NYT 見出し:本文比 2:1 は Medium 記事の引用で一次確認は未取得。25%差・非線形は知覚則であって厳密な閾値ではなく目安。Tailwind 新スケールやトークン命名3方式の一部はブログ/Discussion の提案段階で、一次規格ではない(中核の 8pt グリッドと Material/Atlassian/InVision のトークンは一次ソース)。</div>
+<div class="note"><b>正直な但し書き：</b>「主要解像度が8で割り切れる」という8px採用の根拠は spec.fm の主張で、デバイスが多様化した現在は装飾的理由に近い(本質は選択肢を減らす一貫性)。internal ≤ external のうち「padding ≤ margin」という厳密な不等式は Cieden の定式化で、Refactoring UI の原文は「グループの周囲の余白 > 内側の余白」とより緩い。px vs rem 指針は Josh Comeau 個人の推奨で、固定サイズのバナーでは px 中心で問題ない。NYT 見出し:本文比 2:1 は Medium 記事の引用で一次確認は未取得。25%差・非線形は知覚則であって厳密な閾値ではなく目安。Tailwind 新スケールやトークン命名3方式の一部はブログ/Discussion の提案段階で、一次規格ではない(中核の 8px グリッドと Material/Atlassian/InVision のトークンは一次ソース)。</div>
 
 <p class="src"><span class="badge b-blog">secondary</span><a href="https://gist.github.com/selcukcihan/b9418596a98abfcd4bbc622550820cc5" target="_blank" rel="noopener">Notes from 'Refactoring UI' — GitHub Gist</a></p>
 <p class="src"><span class="badge b-blog">blog</span><a href="https://cieden.com/book/sub-atomic/spacing/spacing-best-practices" target="_blank" rel="noopener">Spacing best practices — Cieden</a></p>

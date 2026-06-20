@@ -7,7 +7,7 @@
       "tags": ["影","シャドウ","エレベーション"],
       "angles": ["why CSS box shadows look cheap fake single harsh black shadow antipattern","designing realistic layered box-shadow light source color Josh Comeau Tobias Ahlin","material elevation shadow tokens scale dark mode alternatives"] },
     { "slug": "spacing-rhythm", "category": "余白", "status": "generating",
-      "title": "余白がなんとなく——8ptで決める余白とリズム",
+      "title": "余白がなんとなく——8pxで決める余白とリズム",
       "problem": "余白を感覚で置いてしまい、詰まり/スカスカ・不揃いになる。",
       "tags": ["余白","スペーシング","リズム"],
       "angles": ["8 point grid spacing system UI why","spacing scale tokens t-shirt sizes rhythm","whitespace proximity grouping common mistakes"] },

@@ -7,7 +7,9 @@ export const meta = {
   ],
 }
 
-const TOPICS = [
+// args（pick-topics.mjs が渡す配列）が来たらそれを使い、無ければデフォルト10件。
+// key(CSSクラス接頭辞)は記事ごとのページ内でしか使われないので slug 由来で十分。
+const DEFAULT_TOPICS = [
   { key:'sh', slug:'shadow-depth', category:'質感', title:'影が安っぽい——のっぺりを脱する影の設計',
     problem:'影をつい単一の濃い黒影で付けてしまい、安っぽく・のっぺり見える。',
     tags:['影','シャドウ','エレベーション'],
@@ -137,6 +139,7 @@ NON-NEGOTIABLE RULES:
 2. The demo must genuinely show THIS topic (e.g. shadows => boxes with different box-shadow; spacing => blocks with different gaps; type scale => actual text at scaled sizes; radius => boxes with different radii; color => actual swatches; buttons => actual styled buttons with :hover note).
 3. Stay responsive: rely only on .grid/.g2/.g3; never hard-code wide fixed pixel widths that could overflow a phone.
 4. Japanese body copy, concrete and implementation-ready. Keep each section tight.
+4b. This is for WEB designers. Use px (or rem) for ALL sizes/values; NEVER use "pt". Speak in CSS/browser terms, not print. The "8-point grid" must be written as the "8pxグリッド".
 5. Cite the provided sources in the relevant sections and in 出典.
 6. Output ONLY the markdown body: start with the <style> block, then "## 結論", end after "## 限界 / 出典". No YAML frontmatter, no surrounding code fences, no preamble or sign-off.`
 
