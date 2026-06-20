@@ -1,0 +1,115 @@
+/* ============================================================
+   Jimi Notes — 共通デザインシステム
+   サイト自身が「脱・無地」を実演する: ダーク+グロー+グレイン背景。
+   記事固有のデモ背景クラスは各Markdownの <style> に書く。
+   ============================================================ */
+:root{
+  --bg:#0a0b10;
+  --ink:#eef0f6;
+  --ink-dim:#a6abbd;
+  --line:rgba(255,255,255,.10);
+  --card:rgba(255,255,255,.04);
+  --accent:#7c5cff;
+  --accent-2:#16d6c8;
+  --warn:#ffb020;
+  --max:920px;
+  font-feature-settings:"palt";
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+  line-height:1.8;-webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
+}
+/* ダーク+グロー */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(60vw 60vw at 15% -10%, rgba(124,92,255,.28), transparent 60%),
+    radial-gradient(50vw 50vw at 100% 10%, rgba(22,214,200,.18), transparent 55%),
+    radial-gradient(70vw 70vw at 50% 120%, rgba(255,90,160,.14), transparent 60%);
+}
+/* SVGグレイン */
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+a{color:var(--accent-2)}
+strong{color:#fff}
+
+/* ---- サイトヘッダー/フッター ---- */
+.site-head{padding:22px 0;border-bottom:1px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.02em;text-decoration:none;color:#fff;font-size:18px}
+.brand small{display:block;font-weight:500;font-size:11px;letter-spacing:.14em;color:var(--ink-dim);text-transform:uppercase}
+.site-foot{padding:50px 0 70px;text-align:center;color:var(--ink-dim);font-size:13px;border-top:1px solid var(--line);margin-top:40px}
+
+/* ---- 見出し/本文 ---- */
+h1{font-size:clamp(28px,5.5vw,46px);line-height:1.28;margin:0 0 16px;letter-spacing:.01em}
+.grad{background:linear-gradient(in oklch,#7c5cff,#16d6c8 55%,#ffb020);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(22px,4vw,30px);margin:44px 0 8px;line-height:1.35}
+h3{font-size:18px;margin:30px 0 10px}
+p{margin:12px 0;color:#d6d9e6}
+.dim{color:var(--ink-dim);font-size:15px}
+.eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-2);margin-bottom:16px}
+.kicker{display:inline-block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:34px 0 4px}
+
+/* ---- カード/グリッド ---- */
+.grid{display:grid;gap:16px;margin:22px 0}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:680px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h4{margin:0 0 6px;font-size:15px}
+.card p{margin:4px 0;font-size:14px;color:var(--ink-dim)}
+
+/* ---- デモ枠（記事の Before/After 実演） ---- */
+.demo{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:18px 0}
+.demo .canvas{height:150px;display:flex;align-items:center;justify-content:center;position:relative}
+.demo .label{padding:10px 14px;font-size:13px;color:var(--ink-dim);border-top:1px solid var(--line);background:rgba(0,0,0,.25)}
+.demo .txt{font-weight:700;font-size:20px;position:relative;z-index:2}
+
+/* ---- 表 ---- */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--ink-dim);font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+td strong{color:#fff}
+
+/* ---- コード ---- */
+pre{background:#070810;border:1px solid var(--line);border-radius:12px;padding:16px;overflow:auto;font-size:13px;line-height:1.6}
+code{font-family:"SF Mono",ui-monospace,Menlo,monospace}
+:not(pre)>code{background:rgba(255,255,255,.07);padding:1px 6px;border-radius:5px;font-size:.92em;color:#c8cdf0}
+
+/* ---- コールアウト ---- */
+.note{border-left:3px solid var(--warn);background:rgba(255,176,32,.07);padding:12px 16px;border-radius:0 10px 10px 0;margin:18px 0;font-size:14.5px}
+.note b{color:var(--warn)}
+
+/* ---- チェックリスト ---- */
+ul.check{list-style:none;padding:0;margin:14px 0}
+ul.check li{padding:10px 0 10px 34px;position:relative;border-bottom:1px solid var(--line)}
+ul.check li::before{content:"✓";position:absolute;left:6px;top:9px;color:var(--accent-2);font-weight:700}
+
+/* ---- 出典 ---- */
+.src{font-size:13px;color:var(--ink-dim)}
+.badge{font-size:11px;padding:1px 7px;border-radius:6px;border:1px solid var(--line);margin-right:6px}
+.b-primary{color:#16d6c8;border-color:rgba(22,214,200,.4)}
+.b-blog{color:var(--ink-dim)}
+
+/* ---- 記事カード（一覧） ---- */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin:30px 0}
+@media(max-width:680px){.cards{grid-template-columns:1fr}}
+.acard{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:border-color .2s,transform .2s}
+.acard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.acard .cat{font-size:11px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+.acard h3{margin:8px 0 6px;color:#fff;font-size:19px}
+.acard p{margin:0;font-size:14px;color:var(--ink-dim)}
+.acard .when{margin-top:14px;font-size:12px;color:var(--ink-dim)}
+
+/* ---- 記事メタ ---- */
+.meta-row{margin:18px 0 6px;font-size:13px;color:var(--ink-dim);display:flex;gap:10px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);border-radius:999px;padding:5px 13px;background:var(--card)}
+.back{display:inline-block;margin:30px 0 0;color:var(--ink-dim);text-decoration:none;font-size:14px}
+.back:hover{color:#fff}
+.article-body{padding-bottom:20px}
